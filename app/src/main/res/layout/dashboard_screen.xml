@@ -6,10 +6,86 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="889dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20px"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/dashboardNav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10px"
+                android:backgroundTint="#114B5F"
+                android:contentDescription="dashboard button"
+                android:minHeight="48dp"
+                app:srcCompat="@drawable/baseline_dashboard_24_white" />
+
+            <TextView
+                android:id="@+id/dashboardText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dashboard"
+                android:textAlignment="center"
+                android:textColor="#114B5F" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/listNav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10px"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="list button"
+                android:minHeight="48dp"
+                app:srcCompat="@drawable/baseline_view_list_24" />
+
+            <TextView
+                android:id="@+id/listText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lists"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/calendarNav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10px"
+                android:backgroundTint="#00FFFFFF"
+                android:contentDescription="calendar button"
+                android:minHeight="48dp"
+                app:srcCompat="@drawable/baseline_calendar_month_24" />
+
+            <TextView
+                android:id="@+id/calendarText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calendar"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
