@@ -16,10 +16,25 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="clipartAsset">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/calendar_month/baseline_calendar_month_24.xml" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="vector_4" />
+                            <entry key="outputName" value="baseline_calendar_month_24_white" />
                             <entry key="sourceFile" value="C:\Users\Kenji\OneDrive\Documents\GitHub\ITISDEV-Inventory-Management\StudyBud" />
                           </map>
                         </option>
