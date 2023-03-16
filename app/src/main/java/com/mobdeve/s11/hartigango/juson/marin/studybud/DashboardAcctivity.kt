@@ -33,6 +33,11 @@ class DashboardActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.calendarNav.setOnClickListener {
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
+        }
+
         this.reminderData = ReminderHelper.initializeData()
 
         this.recyclerView = binding.recycleReminder
