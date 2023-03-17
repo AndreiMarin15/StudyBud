@@ -33,6 +33,10 @@ class ListsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.imgBTN2.setOnClickListener {
+            val intent = Intent(this, )
+        }
+
 
     }
 
