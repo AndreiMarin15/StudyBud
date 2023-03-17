@@ -7,6 +7,6 @@ import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ReminderRecyc
 class ReminderViewHolder(private val binding: DashboardremindersRecyclerBinding): RecyclerView.ViewHolder(binding.root) {
     fun bindData(reminderData: ReminderModel){
         this.binding.reminderTitle.text = reminderData.title
-        this.binding.reminderTime.text = reminderData.dateTime
+        this.binding.dailytaskslayoutText.text = reminderData.dateTime
     }
 }

@@ -20,67 +20,6 @@
         android:src="@drawable/vector_7" />
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#114B5F"
-        android:orientation="horizontal"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView">
-
-        <ImageButton
-            android:id="@+id/notifBell"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginStart="5pt"
-            android:layout_weight="1"
-            android:backgroundTint="#114B5F"
-            android:contentDescription="notif bell"
-            android:minHeight="24dp"
-            android:padding="15dp"
-            android:scaleX="2"
-            android:scaleY="2"
-            android:translationY="4dp"
-            android:src="@drawable/baseline_notifications_24" />
-
-
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="#114B5F"
-            android:foregroundTint="#114B5F"
-            android:orientation="vertical"
-            android:paddingStart="5dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="1dp">
-
-            <TextView
-                android:id="@+id/reminderTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:paddingStart="15dp"
-                android:text="CCINFOM Concept Exam"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/dailytaskslayoutText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="15dp"
-                android:text="Today 12:45 PM"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-    </LinearLayout>
-
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
@@ -102,15 +41,110 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView">
 
-        <TextView
-            android:id="@+id/dailytasksText"
+        <LinearLayout
+            android:id="@+id/linearLayout6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="Daily Tasks"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:background="#114B5F"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageButton
+                android:id="@+id/notifBell"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="5pt"
+                android:layout_weight="1"
+                android:backgroundTint="#114B5F"
+                android:contentDescription="notif bell"
+                android:minHeight="24dp"
+                android:padding="15dp"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:src="@drawable/baseline_notifications_24"
+                android:translationY="4dp" />
+
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="#114B5F"
+                android:foregroundTint="#114B5F"
+                android:orientation="vertical"
+                android:paddingStart="5dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="1dp">
+
+                <TextView
+                    android:id="@+id/reminderTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingStart="15dp"
+                    android:text="CCINFOM Concept Exam"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dailytaskslayoutText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:text="Today 12:45 PM"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#114B5F"
+            android:foregroundTint="#114B5F"
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TextView
+                android:id="@+id/dailytasks2Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Daily Tasks"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="CCAPDEV user interface"
+                android:textColor="#FFFFFF" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Project Review"
+                android:textColor="#FFFFFF" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Weekly Update"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
