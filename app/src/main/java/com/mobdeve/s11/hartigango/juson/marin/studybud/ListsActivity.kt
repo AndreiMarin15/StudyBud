@@ -3,7 +3,6 @@ package com.mobdeve.s11.hartigango.juson.marin.studybud
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.DashboardScreenBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ListsScreenBinding
 
 class ListsActivity : AppCompatActivity() {
@@ -34,7 +33,8 @@ class ListsActivity : AppCompatActivity() {
         }
 
         binding.imgBTN2.setOnClickListener {
-            val intent = Intent(this, )
+            val intent = Intent(this, TasksScreen:: class.java)
+            startActivity(intent)
         }
 
 
