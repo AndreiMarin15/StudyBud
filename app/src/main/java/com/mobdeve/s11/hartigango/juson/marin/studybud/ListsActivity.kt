@@ -28,6 +28,11 @@ class ListsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.imgBTN1.setOnClickListener{
+            val intent = Intent(this, RemindersActivity:: class.java)
+            startActivity(intent)
+        }
+
 
     }
 

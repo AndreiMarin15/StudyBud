@@ -125,21 +125,21 @@
         android:text="+ Add"
         android:textAllCaps="false"
         app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintEnd_toEndOf="@+id/imgBTN2"
+        app:layout_constraintStart_toStartOf="@+id/imgBTN2"
+        app:layout_constraintTop_toBottomOf="@+id/imgBTN2" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/imgBTN2"
         android:layout_width="316dp"
         android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-        app:srcCompat="@drawable/list_2" />
+        app:layout_constraintEnd_toEndOf="@+id/imgBTN1"
+        app:layout_constraintStart_toStartOf="@+id/imgBTN1"
+        app:layout_constraintTop_toBottomOf="@+id/imgBTN1"
+        android:src="@drawable/list_2" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imgBTN1"
         android:layout_width="315dp"
         android:layout_height="66dp"
         android:layout_marginTop="16dp"
@@ -147,6 +147,6 @@
         app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listViewHeader"
-        app:srcCompat="@drawable/list_1" />
+        android:src="@drawable/list_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
