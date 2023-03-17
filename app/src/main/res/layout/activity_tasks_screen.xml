@@ -29,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
+<<<<<<< Updated upstream
     <ImageView
         android:id="@+id/imageView13"
         android:layout_width="wrap_content"
@@ -37,18 +38,43 @@
         tools:layout_editor_absoluteX="101dp"
         tools:layout_editor_absoluteY="238dp" />
 
+=======
+>>>>>>> Stashed changes
     <Button
         android:id="@+id/addTasksBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< Updated upstream
+=======
+        android:layout_marginTop="16dp"
+>>>>>>> Stashed changes
         android:backgroundTint="#666666"
         android:text="+ Add"
         android:textAllCaps="false"
         app:cornerRadius="50dp"
+<<<<<<< Updated upstream
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="432dp" />
 
+=======
+        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/termtwo" />
+
+>>>>>>> Stashed changes
 
 </androidx.constraintlayout.widget.ConstraintLayout>
