@@ -15,7 +15,10 @@ import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.InfoScreenBin
 class DashboardActivity: AppCompatActivity() {
     private lateinit var reminderData: ArrayList<ReminderModel>
     private lateinit var reminderAdapter: ReminderAdapter
+    private lateinit var taskData: ArrayList<TaskModel>
+    private lateinit var taskAdapter: TaskAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView2: RecyclerView
     private lateinit var binding: DashboardScreenBinding
     private val viewNoteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         result: ActivityResult -> if(result.resultCode == RESULT_OK){
@@ -41,12 +44,17 @@ class DashboardActivity: AppCompatActivity() {
         }
 
         this.reminderData = ReminderHelper.initializeData()
+        this.taskData = TaskHelper.initializeData()
 
         this.recyclerView = binding.recycleReminder
         this.reminderAdapter = ReminderAdapter(reminderData, viewNoteLauncher)
         this.recyclerView.adapter = reminderAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
+        this.recyclerView2 = binding.recycleTasks
+        this.taskAdapter = TaskAdapter(taskData)
+        this.recyclerView2.adapter = taskAdapter
+        this.recyclerView2.layoutManager = LinearLayoutManager(this)
 
     }
 }
