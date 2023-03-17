@@ -23,6 +23,16 @@ class ReminderHelper {
                 "March 20, 2:30PM"
             ))
 
+            reminder.add(ReminderModel(
+                "CSG General Assembly",
+                "March 21, 2:30PM"
+            ))
+
+            reminder.add(ReminderModel(
+                "MOBDEVE Phase 2",
+                "March 21, 2:30PM"
+            ))
+
             return reminder
         }
     }
