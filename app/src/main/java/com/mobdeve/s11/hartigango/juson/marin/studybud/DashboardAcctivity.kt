@@ -2,6 +2,7 @@ package com.mobdeve.s11.hartigango.juson.marin.studybud
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
@@ -28,12 +29,13 @@ class DashboardActivity: AppCompatActivity() {
         setContentView(this.binding.root)
 
 
-        binding.listNav.setOnClickListener {
+        binding.listNav.setOnClickListener (View.OnClickListener {
+
             val intent = Intent(this, ListsActivity::class.java)
             startActivity(intent)
-        }
+        })
 
-        binding.calendarNav.setOnClickListener {
+                binding.calendarNav.setOnClickListener {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
         }
