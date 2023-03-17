@@ -23,6 +23,11 @@ class ListsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.addReminderbtn.setOnClickListener {
+            val intent = Intent(this, AddTaskActivity:: class.java)
+            startActivity(intent)
+        }
+
 
     }
 
