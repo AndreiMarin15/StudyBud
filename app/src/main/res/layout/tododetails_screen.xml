@@ -174,8 +174,9 @@
         android:id="@+id/savebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#21D529"
+        android:backgroundTint="#88D398"
         android:text="Save"
+        app:cornerRadius="50px"
         tools:layout_editor_absoluteX="152dp"
         tools:layout_editor_absoluteY="657dp" />
 
