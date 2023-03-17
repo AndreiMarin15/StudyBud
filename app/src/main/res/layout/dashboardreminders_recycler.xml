@@ -57,7 +57,7 @@
                 android:paddingStart="15dp"/>
 
             <TextView
-                android:id="@+id/reminderTime"
+                android:id="@+id/dailytaskslayoutText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Today 12:45 PM"
