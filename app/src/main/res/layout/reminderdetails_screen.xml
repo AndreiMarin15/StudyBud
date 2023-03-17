@@ -130,5 +130,18 @@
         app:layout_constraintStart_toStartOf="@+id/notesText"
         app:layout_constraintTop_toBottomOf="@+id/notesText" />
 
+    <Button
+        android:id="@+id/addReminderbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#88D398"
+        android:text="SAVE"
+        android:textAllCaps="false"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputNotes" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
