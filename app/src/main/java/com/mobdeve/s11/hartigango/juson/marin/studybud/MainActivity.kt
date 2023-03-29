@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
             .requestIdToken("136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com")
             .requestEmail()
             .build()
-
+        // "136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com"
+        // getString(R.string.default_web_client_id)
         gsc = GoogleSignIn.getClient(this, gso)
         gsc.signOut()
 
