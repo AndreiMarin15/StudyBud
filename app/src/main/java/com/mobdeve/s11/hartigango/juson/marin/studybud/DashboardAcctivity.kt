@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.DashboardScreenBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.InfoScreenBinding
 
@@ -20,6 +21,8 @@ class DashboardActivity: AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerView2: RecyclerView
     private lateinit var binding: DashboardScreenBinding
+    private lateinit var auth: FirebaseAuth
+
     private val viewNoteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         result: ActivityResult -> if(result.resultCode == RESULT_OK){
             this.reminderAdapter.notifyItemChanged(0)
@@ -31,6 +34,12 @@ class DashboardActivity: AppCompatActivity() {
         this.binding = DashboardScreenBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
 
+        auth = FirebaseAuth.getInstance()
+
+        binding.logoutBtn.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(this, MainActivity:: class.java))
+        }
 
         binding.listNav.setOnClickListener (View.OnClickListener {
 

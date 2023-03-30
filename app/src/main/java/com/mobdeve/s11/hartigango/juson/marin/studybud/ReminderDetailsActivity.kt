@@ -11,6 +11,7 @@ class ReminderDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(this.binding.root)
 
+
         this.binding.addReminderbtn.setOnClickListener {
             finish()
         }
