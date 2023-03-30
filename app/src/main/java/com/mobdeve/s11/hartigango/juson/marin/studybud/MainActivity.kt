@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -66,7 +65,13 @@ class MainActivity : AppCompatActivity() {
             if (signInTask.isSuccessful) {
                 val account = signInTask.result
                 if (account != null) {
-                    updateUI(account)
+                    if(verifyDLSUEmail(account.email)) {
+                        updateUI(account)
+                    } else {
+                        Toast.makeText(this, "Sign-in failed: Must use a DLSU email.", Toast.LENGTH_SHORT).show()
+                        auth.signOut()
+                        gsc.signOut()
+                    }
                 }
             } else {
                 Toast.makeText(this, "Sign-in failed: ${signInTask.exception}", Toast.LENGTH_SHORT).show()
@@ -86,5 +91,15 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun verifyDLSUEmail(str: String?): Boolean { //dlsu.edu.ph
+        val n: Int = 11
+        var lastChars = str
+        if (lastChars != null) {
+            lastChars = lastChars.substring(lastChars.length - n, lastChars.length)
+        }
+        return lastChars == "dlsu.edu.ph"
+
     }
 }
