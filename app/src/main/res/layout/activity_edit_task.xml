@@ -88,7 +88,7 @@
         android:layout_marginTop="1dp"
         android:ems="17"
         android:inputType="date"
-        android:text="March 16, 2023"
+        android:hint="March 16, 2023"
         android:background="@drawable/textbox"
         android:layout_marginLeft="-15px"
         android:paddingStart="30px"
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:ems="17"
         android:inputType="time"
-        android:text="March 17, 2023"
+        android:hint="March 17, 2023"
         android:background="@drawable/textbox"
         android:layout_marginLeft="-15px"
         android:paddingStart="30px"
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:ems="17"
         android:inputType="textPersonName|text"
-        android:text="Term Two Courses"
+        android:hint="Term Two Courses"
         android:background="@drawable/textbox"
         android:layout_marginLeft="-15px"
         android:paddingStart="30px"
@@ -155,7 +155,7 @@
             android:ems="15"
             android:inputType="text"
             android:paddingStart="30px"
-            android:text="In Progress" />
+            android:hint="In Progress" />
     </LinearLayout>
 
     <TextView
@@ -179,7 +179,7 @@
         android:ems="17"
         android:inputType="text"
         android:paddingStart="30px"
-        android:text="Go to Pinterest for design inspiration"
+        android:hint="Go to Pinterest for design inspiration"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/inputRemind"

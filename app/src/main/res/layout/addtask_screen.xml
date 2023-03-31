@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:ems="17"
         android:inputType="text"
-        android:text="Name"
+        android:hint="Name"
         android:background="@drawable/textbox"
         android:layout_marginLeft="-15px"
         android:paddingStart="30px"
