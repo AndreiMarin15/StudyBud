@@ -15,7 +15,20 @@ class RemindersActivity : AppCompatActivity() {
         setContentView(this.binding.root)
 
 
+        binding.first.setOnClickListener{
+            val intent = Intent(this, ReminderDetailsActivity::class.java)
+            startActivity(intent)
+        }
 
+        binding.second.setOnClickListener{
+            val intent = Intent(this, ReminderDetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.third.setOnClickListener{
+            val intent = Intent(this, ReminderDetailsActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.addReminderbtn.setOnClickListener{
             val intent = Intent(this, ReminderDetailsActivity::class.java)

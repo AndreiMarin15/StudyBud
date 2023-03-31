@@ -40,10 +40,10 @@
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintTop_toBottomOf="@+id/third" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -51,26 +51,26 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/reminder1" />
+        android:src="@drawable/reminder1" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:srcCompat="@drawable/reminder2" />
+        app:layout_constraintEnd_toEndOf="@+id/first"
+        app:layout_constraintStart_toStartOf="@+id/first"
+        app:layout_constraintTop_toBottomOf="@+id/first"
+        android:src="@drawable/reminder2" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/third"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-        app:srcCompat="@drawable/reminder3" />
+        app:layout_constraintEnd_toEndOf="@+id/second"
+        app:layout_constraintStart_toStartOf="@+id/second"
+        app:layout_constraintTop_toBottomOf="@+id/second"
+        android:src="@drawable/reminder3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

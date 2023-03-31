@@ -37,7 +37,12 @@ class DashboardActivity: AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val displayName = intent.getStringExtra("name")
        // val profilepic = intent.getStringExtra("profilepic")
-        binding.userText.text = "${displayName}"
+        if(displayName != null){
+            binding.userText.text = "${displayName}"
+        } else {
+            binding.userText.text = "Andrei Marin"
+        }
+
        // binding.profilepic.setImageURI(Uri.parse(profilepic))
 
         binding.logoutBtn.setOnClickListener {
