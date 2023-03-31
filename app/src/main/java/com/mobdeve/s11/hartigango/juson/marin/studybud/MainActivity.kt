@@ -95,12 +95,14 @@ class MainActivity : AppCompatActivity() {
                         intent.putExtra("name", account.displayName)
                         //   intent.putExtra("profilePic", account.photoUrl.toString())
                         startActivity(intent)
+                        finish()
                     } else {
                         val intent = Intent(this, DashboardActivity::class.java)
                         intent.putExtra("email", account.email)
                         intent.putExtra("name", account.displayName)
                         //   intent.putExtra("profilePic", account.photoUrl.toString())
                         startActivity(intent)
+                        finish()
                     }
 
                 }

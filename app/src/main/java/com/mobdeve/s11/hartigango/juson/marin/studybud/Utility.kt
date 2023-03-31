@@ -8,8 +8,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 class Utility {
     companion object {
         fun getCollectionReferenceForUsers(): CollectionReference {
-            val currentUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
             return  FirebaseFirestore.getInstance().collection("userInfo")
+        }
+        fun getCollectionReferenceForReminders(): CollectionReference {
+            return  FirebaseFirestore.getInstance().collection("reminders")
+        }
+
+        fun getCollectionReferenceForTasks(): CollectionReference {
+            return  FirebaseFirestore.getInstance().collection("tasks")
         }
     }
 

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "136493390124",
+    "project_id": "studybud-mobile",
+    "storage_bucket": "studybud-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136493390124:android:cf41949d50b1e0bce6f489",
+        "android_client_info": {
+          "package_name": "com.mobdeve.s11.hartigango.juson.marin.studybud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136493390124-pu7nmkq9jvq9mbv3h79e34l1kis9aojh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobdeve.s11.hartigango.juson.marin.studybud",
+            "certificate_hash": "fa2ead8a8bfb57547c5625f6675ca2143b700720"
+          }
+        },
+        {
+          "client_id": "136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhLh2w5mLkJJqM75Ug1um96Agl24upwOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136493390124-gu6utg9752a65curabnnsbibrv5v4d87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
