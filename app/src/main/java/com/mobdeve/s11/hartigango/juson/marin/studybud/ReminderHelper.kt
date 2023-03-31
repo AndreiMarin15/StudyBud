@@ -1,5 +1,7 @@
 package com.mobdeve.s11.hartigango.juson.marin.studybud
 
+import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
+
 class ReminderHelper {
     companion object {
         fun initializeData(): ArrayList<ReminderModel> {
@@ -13,25 +15,33 @@ class ReminderHelper {
             )
             )
 
-            reminder.add(ReminderModel(
+            reminder.add(
+                ReminderModel(
                 "CCAPDEV MP Demo",
                 "March 20, 7:30 AM"
-            ))
+            )
+            )
 
-            reminder.add(ReminderModel(
+            reminder.add(
+                ReminderModel(
                 "LSCS General Assembly",
                 "March 20, 2:30PM"
-            ))
+            )
+            )
 
-            reminder.add(ReminderModel(
+            reminder.add(
+                ReminderModel(
                 "CSG General Assembly",
                 "March 21, 2:30PM"
-            ))
+            )
+            )
 
-            reminder.add(ReminderModel(
+            reminder.add(
+                ReminderModel(
                 "MOBDEVE Phase 2",
                 "March 21, 2:30PM"
-            ))
+            )
+            )
 
             return reminder
         }

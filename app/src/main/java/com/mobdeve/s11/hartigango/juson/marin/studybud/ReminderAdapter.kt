@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
 import androidx.activity.result.ActivityResultLauncher
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.DashboardremindersRecyclerBinding
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ReminderRecyclerBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
 
 
 class ReminderAdapter(private val reminderData: ArrayList<ReminderModel>, private val viewNoteLauncher: ActivityResultLauncher<Intent>) : Adapter<ReminderViewHolder>() {

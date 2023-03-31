@@ -1,18 +1,17 @@
 package com.mobdeve.s11.hartigango.juson.marin.studybud
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.DashboardScreenBinding
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.InfoScreenBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
+import com.mobdeve.s11.hartigango.juson.marin.studybud.models.TaskModel
 
 class DashboardActivity: AppCompatActivity() {
     private lateinit var reminderData: ArrayList<ReminderModel>
