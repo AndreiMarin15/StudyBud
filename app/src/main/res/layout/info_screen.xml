@@ -101,7 +101,7 @@
         android:layout_marginTop="1dp"
         android:ems="17"
         android:inputType="textPersonName|text"
-        android:text="College"
+        android:hint="College"
         android:textColor="#8C8C8C"
         android:background="@drawable/textbox"
        android:layout_marginLeft="-15px"
