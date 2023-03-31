@@ -52,7 +52,7 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/dateText"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <TextView
@@ -65,7 +65,7 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/inputTime"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputTime"
+        app:layout_constraintStart_toStartOf="@+id/dateText"
         app:layout_constraintTop_toBottomOf="@+id/inputTime" />
 
     <TextView
@@ -78,7 +78,7 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/inputRemind"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputRemind"
+        app:layout_constraintStart_toStartOf="@+id/dateText"
         app:layout_constraintTop_toBottomOf="@+id/inputRemind" />
 
     <EditText
@@ -89,6 +89,9 @@
         android:ems="17"
         android:inputType="date"
         android:text="March 16, 2023"
+        android:background="@drawable/textbox"
+        android:layout_marginLeft="-15px"
+        android:paddingStart="30px"
         app:layout_constraintEnd_toEndOf="@+id/dateText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/dateText"
@@ -98,36 +101,42 @@
         android:id="@+id/inputTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/textbox"
         android:ems="17"
         android:inputType="time"
+        android:paddingStart="30px"
         android:text="12:45 PM"
         app:layout_constraintEnd_toEndOf="@+id/timeText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/timeText"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/timeText" />
 
     <EditText
         android:id="@+id/inputRemind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/textbox"
         android:ems="17"
         android:inputType="textPersonName|text"
+        android:paddingStart="30px"
         android:text="1 hour before"
         app:layout_constraintEnd_toEndOf="@+id/remindText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/remindText"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/remindText" />
 
     <EditText
         android:id="@+id/inputNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/textbox"
         android:ems="17"
         android:inputType="text"
+        android:paddingStart="30px"
         android:text="Don’t forget to refer to your notes!"
         app:layout_constraintEnd_toEndOf="@+id/notesText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/notesText"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/notesText" />
 
     <Button
