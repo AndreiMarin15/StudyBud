@@ -175,7 +175,6 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="-15px"
         android:background="@drawable/textbox"
         android:ems="17"
         android:inputType="text"
@@ -183,7 +182,7 @@
         android:text="Go to Pinterest for design inspiration"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout7"
+        app:layout_constraintStart_toStartOf="@+id/inputRemind"
         app:layout_constraintTop_toBottomOf="@+id/notes" />
 
     <Button
