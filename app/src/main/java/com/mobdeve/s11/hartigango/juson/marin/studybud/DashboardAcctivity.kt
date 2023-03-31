@@ -1,6 +1,7 @@
 package com.mobdeve.s11.hartigango.juson.marin.studybud
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResult
@@ -35,6 +36,10 @@ class DashboardActivity: AppCompatActivity() {
         setContentView(this.binding.root)
 
         auth = FirebaseAuth.getInstance()
+        val displayName = intent.getStringExtra("name")
+       // val profilepic = intent.getStringExtra("profilepic")
+        binding.userText.text = "${displayName}"
+       // binding.profilepic.setImageURI(Uri.parse(profilepic))
 
         binding.logoutBtn.setOnClickListener {
             auth.signOut()

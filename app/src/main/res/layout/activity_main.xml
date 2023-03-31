@@ -58,7 +58,7 @@
 
     <Button
         android:id="@+id/btnCont"
-        android:layout_width="106dp"
+        android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="#114B5F"

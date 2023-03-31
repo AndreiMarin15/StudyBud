@@ -13,7 +13,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -81,14 +83,69 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener{
-            if(it.isSuccessful){
-                val intent = Intent(this, InfoActivity::class.java)
-                intent.putExtra("email", account.email)
-                intent.putExtra("name", account.displayName)
-                startActivity(intent)
+        auth.signInWithCredential(credential).addOnCompleteListener{ task ->
+            if(task.isSuccessful){
+                val db = FirebaseFirestore.getInstance()
+                val users = db.collection("userInfo")
+                val query = users.whereEqualTo("email", account.email)
+                query.get().addOnSuccessListener { use ->
+                    if (use.isEmpty){
+                        val intent = Intent(this, InfoActivity::class.java)
+                        intent.putExtra("email", account.email)
+                        intent.putExtra("name", account.displayName)
+                        //   intent.putExtra("profilePic", account.photoUrl.toString())
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this, DashboardActivity::class.java)
+                        intent.putExtra("email", account.email)
+                        intent.putExtra("name", account.displayName)
+                        //   intent.putExtra("profilePic", account.photoUrl.toString())
+                        startActivity(intent)
+                    }
+
+                }
+
+        //   val db = FirebaseFirestore.getInstance()
+        //   val docRef = db.collection("users").document("email")
+        //   docRef.get().addOnCompleteListener{
+        //       if(it.isSuccessful){
+        //           val document = it.result
+        //           if(document != null && document.exists()){
+        //               val intent = Intent(this, DashboardActivity::class.java)
+        //               intent.putExtra("email", account.email)
+        //               intent.putExtra("name", account.displayName)
+        //                   //   intent.putExtra("profilePic", account.photoUrl.toString())
+        //               startActivity(intent)
+        //           } else {
+        //               val intent = Intent(this, InfoActivity::class.java)
+        //               intent.putExtra("email", account.email)
+        //               intent.putExtra("name", account.displayName)
+        //           //   intent.putExtra("profilePic", account.photoUrl.toString())
+        //               startActivity(intent)
+        //           }
+        //       }
+        //    }
+
+            //    val db = FirebaseFirestore.getInstance()
+             //   val users = db.collection("userInfo").document().collection("users")
+            //    val query = users.whereEqualTo("email", account.email)
+
+            //    if(query.equals(null)){
+            //        val intent = Intent(this, InfoActivity::class.java)
+            //        intent.putExtra("email", account.email)
+            //        intent.putExtra("name", account.displayName)
+            //        //   intent.putExtra("profilePic", account.photoUrl.toString())
+            //        startActivity(intent)
+            //   } else {
+            //       val intent = Intent(this, DashboardActivity::class.java)
+            //       intent.putExtra("email", account.email)
+            //       intent.putExtra("name", account.displayName)
+            //       //   intent.putExtra("profilePic", account.photoUrl.toString())
+            //       startActivity(intent)
+            //   }
+
             } else {
-                Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
             }
         }
     }
