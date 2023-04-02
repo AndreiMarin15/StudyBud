@@ -15,10 +15,13 @@ class AddTaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(this.binding.root)
 
+        auth = FirebaseAuth.getInstance()
+
         binding.createListbtn.setOnClickListener{
             finish()
         }
-        auth = FirebaseAuth.getInstance()
+
+
         this.binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))

@@ -1,6 +1,8 @@
 package com.mobdeve.s11.hartigango.juson.marin.studybud
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResult
@@ -21,7 +23,9 @@ class DashboardActivity: AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerView2: RecyclerView
     private lateinit var binding: DashboardScreenBinding
+
     private lateinit var auth: FirebaseAuth
+    private lateinit var sp: SharedPreferences
 
     private val viewNoteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         result: ActivityResult -> if(result.resultCode == RESULT_OK){
@@ -35,30 +39,37 @@ class DashboardActivity: AppCompatActivity() {
         setContentView(this.binding.root)
 
         auth = FirebaseAuth.getInstance()
-        val displayName = intent.getStringExtra("name")
-       // val profilepic = intent.getStringExtra("profilepic")
-        if(displayName != null){
-            binding.userText.text = "${displayName}"
-        } else {
-            binding.userText.text = "Andrei Marin"
-        }
+        sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
-       // binding.profilepic.setImageURI(Uri.parse(profilepic))
+
+        val displayName = sp.getString("NAME", "NAME")
+        val program = sp.getString("PROGRAM", "PROGRAM")
+        val docId = sp.getString("DOCID", "DOCID")
+
+       // val profilepic = intent.getStringExtra("profilepic")
+
+        binding.userText.text = displayName
+        binding.courseText.text = program
+
+        // binding.profilepic.setImageURI(Uri.parse(profilepic))
 
         binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))
+            finish()
         }
 
         binding.listNav.setOnClickListener (View.OnClickListener {
 
             val intent = Intent(this, ListsActivity::class.java)
             startActivity(intent)
+
         })
 
-                binding.calendarNav.setOnClickListener {
+        binding.calendarNav.setOnClickListener {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
+
         }
 
         this.reminderData = ReminderHelper.initializeData()
@@ -75,4 +86,6 @@ class DashboardActivity: AppCompatActivity() {
         this.recyclerView2.layoutManager = LinearLayoutManager(this)
 
     }
+
+
 }

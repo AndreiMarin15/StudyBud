@@ -19,11 +19,13 @@ class ListsActivity : AppCompatActivity() {
         binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))
+            finish()
         }
 
         binding.calendarNav.setOnClickListener {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
+
         }
 
         binding.dashboardNav.setOnClickListener {

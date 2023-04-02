@@ -20,6 +20,7 @@ class CalendarActivity : AppCompatActivity() {
         binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))
+            finish()
         }
 
         binding.dashboardNav.setOnClickListener {
