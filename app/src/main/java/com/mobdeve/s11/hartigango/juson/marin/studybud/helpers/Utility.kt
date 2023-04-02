@@ -1,4 +1,4 @@
-package com.mobdeve.s11.hartigango.juson.marin.studybud.firestorehelpers
+package com.mobdeve.s11.hartigango.juson.marin.studybud.helpers
 
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference

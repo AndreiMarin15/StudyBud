@@ -4,12 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.InfoScreenBinding
-import com.mobdeve.s11.hartigango.juson.marin.studybud.firestorehelpers.Utility
+import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.UserInfoModel
 
 class InfoActivity : AppCompatActivity(){
