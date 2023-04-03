@@ -6,18 +6,18 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.InfoScreenBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityInfoBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.UserInfoModel
 
 class InfoActivity : AppCompatActivity(){
-    private lateinit var binding: InfoScreenBinding
+    private lateinit var binding: ActivityInfoBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var sp: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.binding = InfoScreenBinding.inflate(layoutInflater)
+        this.binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
 
         auth = FirebaseAuth.getInstance()
@@ -62,18 +62,6 @@ class InfoActivity : AppCompatActivity(){
         }
 
         binding.welcomeMsg2.text = "Welcome, ${displayName}"
-
-        binding.editCollege.setOnClickListener{
-            binding.editCollege.setText("College of Computer Studies")
-        }
-
-        binding.editDegree.setOnClickListener {
-            binding.editDegree.setText("BS Information Systems")
-        }
-
-        binding.editID.setOnClickListener {
-            binding.editID.setText("12000000")
-        }
     }
 
 

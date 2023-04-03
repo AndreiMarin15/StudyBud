@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
 import androidx.activity.result.ActivityResultLauncher
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.DashboardremindersRecyclerBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.LayoutDashboardRemindersBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
 
 
 class ReminderAdapter(private val reminderData: ArrayList<ReminderModel>, private val viewNoteLauncher: ActivityResultLauncher<Intent>) : Adapter<ReminderViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReminderViewHolder {
-        val itemViewBinding: DashboardremindersRecyclerBinding = DashboardremindersRecyclerBinding.inflate(
+        val itemViewBinding: LayoutDashboardRemindersBinding = LayoutDashboardRemindersBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

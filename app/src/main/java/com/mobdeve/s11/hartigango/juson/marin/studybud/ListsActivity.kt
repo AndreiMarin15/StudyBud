@@ -4,13 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ListsScreenBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.*
+import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityListsBinding
 
 class ListsActivity : AppCompatActivity() {
-    private lateinit var binding: ListsScreenBinding
+    private lateinit var binding: ActivityListsBinding
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
-        this.binding = ListsScreenBinding.inflate(layoutInflater)
+        this.binding = ActivityListsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(this.binding.root)
 

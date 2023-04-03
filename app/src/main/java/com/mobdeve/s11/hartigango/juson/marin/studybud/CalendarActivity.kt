@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityCalendarBinding
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ListsScreenBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.ListsActivity
 
 class CalendarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalendarBinding

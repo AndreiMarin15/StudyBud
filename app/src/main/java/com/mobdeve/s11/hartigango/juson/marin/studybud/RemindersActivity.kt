@@ -4,13 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.RemindersScreenBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityRemindersBinding
 
 class RemindersActivity : AppCompatActivity() {
-    private lateinit var binding: RemindersScreenBinding
+    private lateinit var binding: ActivityRemindersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        this.binding = RemindersScreenBinding.inflate(layoutInflater)
+        this.binding = ActivityRemindersBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(this.binding.root)
 

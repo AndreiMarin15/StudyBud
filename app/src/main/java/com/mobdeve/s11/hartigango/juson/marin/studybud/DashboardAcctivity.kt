@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.DashboardScreenBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityDashboardBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.TaskModel
 
@@ -22,7 +22,7 @@ class DashboardActivity: AppCompatActivity() {
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerView2: RecyclerView
-    private lateinit var binding: DashboardScreenBinding
+    private lateinit var binding: ActivityDashboardBinding
 
     private lateinit var auth: FirebaseAuth
     private lateinit var sp: SharedPreferences
@@ -35,7 +35,7 @@ class DashboardActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.binding = DashboardScreenBinding.inflate(layoutInflater)
+        this.binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
 
         auth = FirebaseAuth.getInstance()
