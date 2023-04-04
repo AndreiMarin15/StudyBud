@@ -17,30 +17,16 @@
         android:src="@drawable/vector_5" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/timeInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="CCINFOM Concept Exam"
-        android:textColor="#000000"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
-
-    <TextView
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Date and Time"
+        android:text="Time"
         android:textColor="#000000"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/etDate" />
 
     <TextView
         android:id="@+id/remindText"
@@ -50,8 +36,8 @@
         android:text="Remind me.."
         android:textColor="#000000"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toStartOf="@+id/timeInput"
+        app:layout_constraintTop_toBottomOf="@+id/etTime" />
 
     <TextView
         android:id="@+id/notesText"
@@ -61,13 +47,13 @@
         android:text="Notes"
         android:textColor="#000000"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/inputRemind"
+        app:layout_constraintEnd_toEndOf="@+id/etRemind"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/inputRemind" />
+        app:layout_constraintStart_toStartOf="@+id/timeInput"
+        app:layout_constraintTop_toBottomOf="@+id/etRemind" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/etTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
@@ -77,13 +63,13 @@
         android:background="@drawable/textbox"
         android:layout_marginLeft="-15px"
         android:paddingStart="30px"
-        app:layout_constraintEnd_toEndOf="@+id/dateText"
+        app:layout_constraintEnd_toEndOf="@+id/timeInput"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/dateText" />
+        app:layout_constraintStart_toStartOf="@+id/timeInput"
+        app:layout_constraintTop_toBottomOf="@+id/timeInput" />
 
     <EditText
-        android:id="@+id/inputRemind"
+        android:id="@+id/etRemind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/textbox"
@@ -92,11 +78,11 @@
         android:paddingStart="30px"
         app:layout_constraintEnd_toEndOf="@+id/remindText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/etTime"
         app:layout_constraintTop_toBottomOf="@+id/remindText" />
 
     <EditText
-        android:id="@+id/inputNotes"
+        android:id="@+id/etNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/textbox"
@@ -105,11 +91,11 @@
         android:paddingStart="30px"
         app:layout_constraintEnd_toEndOf="@+id/notesText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/etTime"
         app:layout_constraintTop_toBottomOf="@+id/notesText" />
 
     <Button
-        android:id="@+id/addReminderbtn"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -119,7 +105,46 @@
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputNotes" />
+        app:layout_constraintTop_toBottomOf="@+id/etNotes" />
+
+    <TextView
+        android:id="@+id/dateInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textbox"
+
+        android:ems="17"
+        android:inputType="date"
+        android:paddingStart="30px"
+        app:layout_constraintEnd_toEndOf="@+id/dateInput"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dateInput"
+        app:layout_constraintTop_toBottomOf="@+id/dateInput" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="160dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

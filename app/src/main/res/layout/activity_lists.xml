@@ -144,33 +144,22 @@
         android:id="@+id/addReminderbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:backgroundTint="#666666"
         android:text="+ Add"
         android:textAllCaps="false"
         app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/imgBTN2"
-        app:layout_constraintStart_toStartOf="@+id/imgBTN2"
-        app:layout_constraintTop_toBottomOf="@+id/imgBTN2" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        tools:layout_editor_absoluteX="156dp" />
 
-    <ImageView
-        android:id="@+id/imgBTN2"
-        android:layout_width="316dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="@+id/imgBTN1"
-        app:layout_constraintStart_toStartOf="@+id/imgBTN1"
-        app:layout_constraintTop_toBottomOf="@+id/imgBTN1"
-        android:src="@drawable/list_2" />
-
-    <ImageView
-        android:id="@+id/imgBTN1"
-        android:layout_width="315dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="500dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listViewHeader"
-        android:src="@drawable/list_1" />
+        app:layout_constraintVertical_bias="0.07999998" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

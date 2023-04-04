@@ -5,9 +5,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityInfoBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
+import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ListModel
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.UserInfoModel
 
 class InfoActivity : AppCompatActivity(){

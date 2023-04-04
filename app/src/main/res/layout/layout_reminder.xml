@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:id="@+id/reminderBtnLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="390dp"
+        android:layout_height="69dp"
         android:background="#114B5F"
         android:backgroundTint="#114B5F"
         android:foregroundTint="#114B5F"
@@ -18,9 +18,10 @@
         android:paddingEnd="200dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <TextView
             android:id="@+id/listName"

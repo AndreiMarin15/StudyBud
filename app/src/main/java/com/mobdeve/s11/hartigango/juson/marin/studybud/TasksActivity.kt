@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityTasksBinding
 
-class TasksScreen : AppCompatActivity() {
+class TasksActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTasksBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         this.binding = ActivityTasksBinding.inflate(layoutInflater)

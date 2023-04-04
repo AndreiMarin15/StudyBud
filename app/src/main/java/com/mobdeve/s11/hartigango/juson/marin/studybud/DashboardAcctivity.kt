@@ -4,14 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityDashboardBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
+import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ListModel
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.TaskModel
 
@@ -85,6 +90,21 @@ class DashboardActivity: AppCompatActivity() {
         this.recyclerView2.adapter = taskAdapter
         this.recyclerView2.layoutManager = LinearLayoutManager(this)
 
+        val db = Utility.getCollectionReferenceForLists(docId!!)
+        val query = db.whereEqualTo("name", "remindersList")
+        query.get().addOnSuccessListener { reminder ->
+            if(reminder.isEmpty){
+                initiateRemindersList(docId)
+            }
+        }
+
+
+    }
+
+    private fun initiateRemindersList(docID: String){
+        val reminderList = ListModel("Reminders", sp.getString("EMAIL", "N/A")!!, Timestamp.now())
+
+        Utility.setList(reminderList, docID)
     }
 
 

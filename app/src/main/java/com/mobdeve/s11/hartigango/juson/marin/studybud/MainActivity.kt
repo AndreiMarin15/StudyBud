@@ -116,8 +116,6 @@ class MainActivity : AppCompatActivity() {
                                     if(doc.data?.get("email") == account.email){
                                         val docId = doc.id
                                         val program = doc.data?.get("program").toString()
-                                        Log.d("MAIN", docId)
-                                        Log.d("MAIN", program)
 
                                         val editor: SharedPreferences.Editor = sp.edit()
                                         editor.putString("EMAIL", account.email)
