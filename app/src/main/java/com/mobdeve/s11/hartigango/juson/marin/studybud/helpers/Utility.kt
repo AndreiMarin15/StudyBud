@@ -10,6 +10,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.*
 import java.text.SimpleDateFormat
+import java.util.*
 
 class Utility {
     companion object {
@@ -67,7 +68,8 @@ class Utility {
         }
 
         fun timestampToString(timestamp: Timestamp): String{
-           return SimpleDateFormat("MM/dd/yyyy").format(timestamp.toDate())
+            val dateFormat = SimpleDateFormat("MMMM d, yyyy 'at' h:mm a", Locale.US)
+            return dateFormat.format(timestamp.toDate())
         }
 
 

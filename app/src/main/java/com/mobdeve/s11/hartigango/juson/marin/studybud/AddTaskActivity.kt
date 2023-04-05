@@ -17,11 +17,21 @@ class AddTaskActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        binding.createListbtn.setOnClickListener{
+        this.binding.createListbtn.setOnClickListener{
+
             finish()
         }
 
+        this.binding.calendarNav.setOnClickListener {
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
 
+        }
+
+        binding.dashboardNav.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
         this.binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))

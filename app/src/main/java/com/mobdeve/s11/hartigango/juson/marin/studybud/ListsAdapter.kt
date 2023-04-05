@@ -2,27 +2,51 @@ package com.mobdeve.s11.hartigango.juson.marin.studybud
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.LayoutReminderBinding
+import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ListModel
+import io.grpc.okhttp.internal.Util
 
-class ListsAdapter(options: FirestoreRecyclerOptions<ListModel>, context: Context) : FirestoreRecyclerAdapter<ListModel, ListsAdapter.ListsViewHolder>(options) {
+class ListsAdapter(options: FirestoreRecyclerOptions<ListModel>, context: Context, docId: String) : FirestoreRecyclerAdapter<ListModel, ListsAdapter.ListsViewHolder>(options) {
 
-    class ListsViewHolder(val binding: LayoutReminderBinding): RecyclerView.ViewHolder(binding.root) {
+    class ListsViewHolder(val binding: LayoutReminderBinding, context: Context): RecyclerView.ViewHolder(binding.root) {
+        private val sp = context.applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
+        private val docId = sp.getString("DOCID", "N/A")
+
         fun bindData(list: ListModel){
-            binding.listName.text = list.name
-            binding.itemCount.text = "1"
+            if(list.name == "Reminders"){
+                val docRef =  Utility.getCollectionReferenceForLists(docId!!).document(list.name).collection("remindersList")
+                var count = 0
+                docRef.get().addOnSuccessListener {
+                    count = it.size()
+
+                    binding.listName.text = list.name
+                    binding.itemCount.text = count.toString()
+                }.addOnFailureListener {
+                    binding.listName.text = list.name
+                    binding.itemCount.text = count.toString()
+                }
+            } else {
+                // TODO: Implement for Tasks
+            }
+
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListsViewHolder {
         val itemViewBinding: LayoutReminderBinding = LayoutReminderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListsViewHolder(itemViewBinding)
+        return ListsViewHolder(itemViewBinding, parent.context)
+
 
         // TODO: Implement itemCount
     }

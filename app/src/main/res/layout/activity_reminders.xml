@@ -33,44 +33,21 @@
         android:id="@+id/addReminderbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:backgroundTint="#666666"
         android:text="+ Add"
         android:textAllCaps="false"
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/third" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
-    <ImageView
-        android:id="@+id/first"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="292dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:src="@drawable/reminder1" />
-
-    <ImageView
-        android:id="@+id/second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/first"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/first"
-        android:src="@drawable/reminder2" />
-
-    <ImageView
-        android:id="@+id/third"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/second"
-        app:layout_constraintStart_toStartOf="@+id/second"
-        app:layout_constraintTop_toBottomOf="@+id/second"
-        android:src="@drawable/reminder3" />
+        android:maxHeight="590dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

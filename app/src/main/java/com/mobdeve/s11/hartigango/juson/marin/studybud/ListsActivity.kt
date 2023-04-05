@@ -62,7 +62,7 @@ class ListsActivity : AppCompatActivity() {
             .setQuery(query, ListModel::class.java).build()
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        listsAdapter = ListsAdapter(options, this)
+        listsAdapter = ListsAdapter(options, this, docID)
         recyclerView.adapter = listsAdapter
     }
 
