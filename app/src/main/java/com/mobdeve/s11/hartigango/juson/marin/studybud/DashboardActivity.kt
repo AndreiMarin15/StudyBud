@@ -129,9 +129,6 @@ class DashboardActivity: AppCompatActivity() {
         taskAdapter = TaskAdapter(options, this, docId, this)
         recyclerView2.adapter = taskAdapter
 
-        runOnUiThread {
-            taskAdapter.notifyDataSetChanged()
-        }
     }
 
      fun setupProgress(docId: String){

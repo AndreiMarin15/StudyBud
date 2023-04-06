@@ -1,6 +1,8 @@
 package com.mobdeve.s11.hartigango.juson.marin.studybud.helpers
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.*
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.*
@@ -38,12 +40,14 @@ class Utility {
 
         }
 
-        fun updateTask(category: String, docID: String, document: String, data: Map<String, Boolean>){
+        fun updateTask(category: String, docID: String, document: String, data: Map<String, Boolean>): Task<Void> {
             val docRef: DocumentReference = getCollectionReferenceForTasks(category, docID).document(document)
             val docRef2: DocumentReference = getCollectionReferenceForAllTasks(docID).document(document)
 
-            docRef.update(data)
-            docRef2.update(data)
+            val updateTask1 = docRef.update(data)
+            val updateTask2 = docRef2.update(data)
+
+            return Tasks.whenAll(updateTask1, updateTask2)
         }
 
         fun setTask (category: String, task: TaskModel, docID: String){
