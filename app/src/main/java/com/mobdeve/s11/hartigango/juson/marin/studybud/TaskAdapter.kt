@@ -22,11 +22,12 @@ import com.mobdeve.s11.hartigango.juson.marin.studybud.models.TaskModel
 class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context, docId: String, dbActivity: DashboardActivity?): FirestoreRecyclerAdapter<TaskModel, TaskAdapter.TaskViewHolder>(options) {
     val id = docId
     val act = dbActivity
-
+    private var isProcessingClick = false
     class TaskViewHolder(val binding: LayoutTodaysTaskBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindData(task: TaskModel){
             binding.task.text = task.task
             binding.task.isChecked = task.status
+
 
         }
     }
@@ -55,86 +56,29 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
         }
 
         holder.binding.task.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-
-
+            if(!isProcessingClick) {
+                isProcessingClick = true
+                val newData = mapOf(
+                    "status" to isChecked,
+                )
                 val query = Utility.getCollectionReferenceForTasks(task.category, id)
-                    .whereEqualTo("category", task.category)
-                    .whereEqualTo("task", task.task)
-                    .whereEqualTo("todoDate", task.todoDate)
-                    .limit(1)
-                val query2 = Utility.getCollectionReferenceForAllTasks(id)
                     .whereEqualTo("category", task.category)
                     .whereEqualTo("task", task.task)
                     .whereEqualTo("todoDate", task.todoDate)
                     .limit(1)
 
                 query.get().addOnSuccessListener { documents ->
-                    if(!documents.isEmpty){
+                    if (!documents.isEmpty) {
                         val doc = documents.first()
-                        val newData = mapOf(
-                            "status" to true
-                        )
 
-                        doc.reference.update(newData)
-
+                        Utility.updateTask(task.category, id, doc.id, newData)
                     }
 
                 }
 
-                query2.get().addOnSuccessListener { documents ->
-                    if(!documents.isEmpty){
-                        val doc = documents.first()
-                        val newData = mapOf(
-                            "status" to true
-                        )
 
-                        doc.reference.update(newData)
-
-                    }
-
-                }
-
-            } else {
-
-                val query = Utility.getCollectionReferenceForTasks(task.category, id)
-                    .whereEqualTo("category", task.category)
-                    .whereEqualTo("task", task.task)
-                    .whereEqualTo("todoDate", task.todoDate)
-                    .limit(1)
-                val query2 = Utility.getCollectionReferenceForAllTasks(id)
-                    .whereEqualTo("category", task.category)
-                    .whereEqualTo("task", task.task)
-                    .whereEqualTo("todoDate", task.todoDate)
-                    .limit(1)
-
-                query.get().addOnSuccessListener { documents ->
-                    if(!documents.isEmpty){
-                        val doc = documents.first()
-                        val newData = mapOf(
-                            "status" to false
-                        )
-
-                        doc.reference.update(newData)
-
-                    }
-
-                }
-
-                query2.get().addOnSuccessListener { documents ->
-                    if(!documents.isEmpty){
-                        val doc = documents.first()
-                        val newData = mapOf(
-                            "status" to false
-                        )
-
-                        doc.reference.update(newData)
-
-                    }
-
-                }
             }
-
+            isProcessingClick = false
 
         }
 

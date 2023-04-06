@@ -38,6 +38,14 @@ class Utility {
 
         }
 
+        fun updateTask(category: String, docID: String, document: String, data: Map<String, Boolean>){
+            val docRef: DocumentReference = getCollectionReferenceForTasks(category, docID).document(document)
+            val docRef2: DocumentReference = getCollectionReferenceForAllTasks(docID).document(document)
+
+            docRef.update(data)
+            docRef2.update(data)
+        }
+
         fun setTask (category: String, task: TaskModel, docID: String){
             val docRef: DocumentReference = getCollectionReferenceForTasks(category, docID).document()
             val docRef2: DocumentReference = getCollectionReferenceForAllTasks(docID).document(docRef.id)

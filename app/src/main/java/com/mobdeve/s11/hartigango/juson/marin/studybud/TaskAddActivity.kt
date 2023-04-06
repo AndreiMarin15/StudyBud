@@ -58,7 +58,7 @@ class TaskAddActivity : AppCompatActivity() {
                 val dateTime = dateFormat.parse(date)
                 val timestamp = Timestamp(dateTime!!)
 
-                val taskObj = TaskModel(binding.etTitle.text.toString(), timestamp, category,false, binding.etNote.text.toString())
+                val taskObj = TaskModel(binding.etTitle.text.toString(), timestamp, category, false, binding.etNote.text.toString())
 
                 Utility.setTask(category, taskObj, docId)
                 Toast.makeText(this, "Task Added!", Toast.LENGTH_SHORT).show()
