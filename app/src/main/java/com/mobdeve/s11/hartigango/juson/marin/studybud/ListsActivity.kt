@@ -42,17 +42,21 @@ class ListsActivity : AppCompatActivity() {
         binding.calendarNav.setOnClickListener {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
         }
 
         binding.dashboardNav.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            finish()
         }
 
         binding.addReminderbtn.setOnClickListener {
             val intent = Intent(this, AddTaskActivity:: class.java)
             startActivity(intent)
+
         }
 
     }

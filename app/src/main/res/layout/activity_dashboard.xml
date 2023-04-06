@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.564"
-     />
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="7 Tasks"
+                    android:text="0 Tasks"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="3 Tasks"
+                    android:text="0 Tasks"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -160,7 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="3 Tasks"
+                    android:text="0 Tasks"
                     android:textSize="10sp" />
 
             </LinearLayout>

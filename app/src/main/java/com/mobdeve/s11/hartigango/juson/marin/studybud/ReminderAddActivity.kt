@@ -83,7 +83,6 @@ class ReminderAddActivity : AppCompatActivity() {
             val remText = binding.etRemind.text.toString().trim()
 
             if(dateText.isNotEmpty() && nameText.isNotEmpty() && timeText.isNotEmpty() && remText.isNotEmpty()){
-                // TODO: SAVE TO FIREBASE
 
                 val dateFormat = SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.US)
 

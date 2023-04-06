@@ -35,10 +35,12 @@ class TasksActivity : AppCompatActivity() {
 
         setupRecyclerView(docId, category)
 
-    //    binding.imageView12.setOnClickListener{
-    //        val intent = Intent(this, EditTaskActivity:: class.java)
-    //        startActivity(intent)
-    //    }
+        binding.titleTV.text = category
+
+        //    binding.imageView12.setOnClickListener{
+        //        val intent = Intent(this, EditTaskActivity:: class.java)
+        //        startActivity(intent)
+        //    }
         binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))
@@ -69,7 +71,8 @@ class TasksActivity : AppCompatActivity() {
             .setQuery(query, TaskModel::class.java).build()
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        taskAdapter = TaskAdapter(options, this)
+
+        taskAdapter = TaskAdapter(options, this, docId, null)
         recyclerView.adapter = taskAdapter
     }
 

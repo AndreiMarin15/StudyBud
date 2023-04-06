@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
+import android.widget.CheckBox
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -32,16 +34,16 @@ class DashboardActivity: AppCompatActivity() {
     private lateinit var reminderAdapter: ReminderAdapter
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var taskData: ArrayList<TaskModel>
-     private lateinit var reminderRecycler: RecyclerView
+    private lateinit var reminderRecycler: RecyclerView
     private lateinit var recyclerView2: RecyclerView
     private lateinit var binding: ActivityDashboardBinding
-
+    private lateinit var docId: String
     private lateinit var auth: FirebaseAuth
     private lateinit var sp: SharedPreferences
 
     private val viewNoteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        result: ActivityResult -> if(result.resultCode == RESULT_OK){
-            this.reminderAdapter.notifyItemChanged(0)
+            result: ActivityResult -> if(result.resultCode == RESULT_OK){
+        this.reminderAdapter.notifyItemChanged(0)
     }
     }
 
@@ -58,12 +60,14 @@ class DashboardActivity: AppCompatActivity() {
 
         val displayName = sp.getString("NAME", "NAME")
         val program = sp.getString("PROGRAM", "PROGRAM")
-        val docId = sp.getString("DOCID", "DOCID")
+        docId = sp.getString("DOCID", "DOCID")!!
 
-       // val profilepic = intent.getStringExtra("profilepic")
+        // val profilepic = intent.getStringExtra("profilepic")
 
         binding.userText.text = displayName
         binding.courseText.text = program
+
+        setupProgress(docId)
 
         // binding.profilepic.setImageURI(Uri.parse(profilepic))
 
@@ -77,24 +81,28 @@ class DashboardActivity: AppCompatActivity() {
 
             val intent = Intent(this, ListsActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
 
         })
 
         binding.calendarNav.setOnClickListener {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
         }
 
         this.reminderData = ReminderHelper.initializeData()
         this.taskData = TaskHelper.initializeData()
 
         this.reminderRecycler = binding.recycleReminder
-        setupReminderRecycler(docId!!)
+        setupReminderRecycler(docId)
 
 
         this.recyclerView2 = binding.recycleTasks
         setupTaskRecycler(docId)
+
 
         val db = Utility.getCollectionReferenceForReminders(docId)
         val query = db.whereEqualTo("name", "remindersList")
@@ -118,8 +126,35 @@ class DashboardActivity: AppCompatActivity() {
         val options : FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
             .setQuery(query, TaskModel::class.java).build()
         recyclerView2.layoutManager = LinearLayoutManager(this)
-        taskAdapter = TaskAdapter(options, this)
+        taskAdapter = TaskAdapter(options, this, docId, this)
         recyclerView2.adapter = taskAdapter
+
+        runOnUiThread {
+            taskAdapter.notifyDataSetChanged()
+        }
+    }
+
+    fun setupProgress(docId: String){
+        var inProgress = 0
+        var completed = 0
+        val query = Utility.getCollectionReferenceForAllTasks(docId)
+
+        query.get().addOnSuccessListener { documents ->
+            binding.todotasksText.text = "${documents.size()} tasks"
+            if(documents.documents.isNotEmpty()){
+                for(document in documents.documents){
+                    if(document.getBoolean("status") == false){
+                        inProgress += 1
+                    } else {
+                        completed += 1
+                    }
+                }
+            }
+
+            binding.inprogressTasks.text = "$inProgress tasks"
+            binding.completedTasks.text = "$completed tasks"
+
+        }
     }
 
 
@@ -143,18 +178,21 @@ class DashboardActivity: AppCompatActivity() {
         super.onStart()
         taskAdapter.startListening()
         reminderAdapter.startListening()
+
     }
 
     override fun onStop() {
         super.onStop()
         taskAdapter.stopListening()
         reminderAdapter.stopListening()
+
     }
 
     override fun onResume() {
         super.onResume()
         taskAdapter.notifyDataSetChanged()
         reminderAdapter.notifyDataSetChanged()
+
     }
 
 

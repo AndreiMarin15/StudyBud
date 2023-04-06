@@ -30,13 +30,38 @@ class EditTaskActivity : AppCompatActivity() {
         val docId = sp.getString("DOCID", "DOCID")!!
 
         val taskName = intent.getStringExtra("task")!!
-        val todoDate = intent.getStringExtra("todoDate")!!
+
         val status = intent.getBooleanExtra("status", false)
         val notes = intent.getStringExtra("notes")!!
         val category = intent.getStringExtra("category")!!
 
         binding.tvTaskName.setText(taskName)
-        binding.etDateTodo.text = todoDate
+
+        val todoDate = intent.getStringExtra("todoDate")!!
+
+        val todoDateRegEx = "Timestamp\\(seconds=(\\d+), nanoseconds=(\\d+)\\)".toRegex()
+
+        val matchResult = todoDateRegEx.find(todoDate)
+        val seconds = matchResult!!.groups[1]!!.value.toLong()
+        val nanoseconds = matchResult.groups[2]!!.value.toInt()
+
+        val newDate = Date(seconds * 1000)
+
+        val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+
+        val sDate = dateFormat.format(newDate)
+
+        val tstamp = Timestamp(seconds, nanoseconds)
+
+        val formattedStamp = SimpleDateFormat("MMMM d, yyyy 'at' h:mm:ss a 'UTC'Z", Locale.US)
+
+        formattedStamp.timeZone = TimeZone.getTimeZone("UTC+8")
+
+        val sStamp = formattedStamp.format(tstamp.toDate()) // ito uupdate if di mag update
+
+
+        binding.etDateTodo.text = sDate
+
         if(status){binding.status.text = "Done"} else {binding.status.text = "In Progress"}
         binding.etCat.text = category
         binding.edNote.setText(notes)
@@ -64,11 +89,9 @@ class EditTaskActivity : AppCompatActivity() {
                 .whereEqualTo("category", category)
                 .whereEqualTo("task", taskName)
                 .limit(1)
+            // lalagay pag parse if nag update si time
 
-            val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
 
-            val dateTime = dateFormat.parse(date)
-            val timestamp = Timestamp(dateTime!!)
             var b = false
             if(binding.status.text == "Done"){
                 b = true
@@ -76,17 +99,36 @@ class EditTaskActivity : AppCompatActivity() {
             query.get().addOnSuccessListener { documents ->
                 if(!documents.isEmpty){
                     val doc = documents.first()
-                    val newData = mapOf(
-                        "task" to this.binding.tvTaskName.text.toString(),
-                        "status" to b,
-                        "notes" to this.binding.notes.text.toString(),
-                        "category" to this.binding.etCat.text.toString()
-                    )
 
-                    doc.reference.update(newData).addOnSuccessListener {
-                        Toast.makeText(this, "Task Updated!", Toast.LENGTH_SHORT).show()
+                    if(this.binding.etDateTodo.text.toString() == sStamp){
+                        val newData = mapOf(
+                            "task" to this.binding.tvTaskName.text.toString(),
+                            "status" to b,
+                            "notes" to this.binding.notes.text.toString(),
+                            "category" to this.binding.etCat.text.toString(),
+                            "todoDate" to sStamp
+                        )
+
+                        doc.reference.update(newData).addOnSuccessListener {
+                            Toast.makeText(this, "Task Updated!", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+
+                        val dateTime = dateFormat.parse(date)
+                        val timestamp = Timestamp(dateTime!!)
+
+                        val newData = mapOf(
+                            "task" to this.binding.tvTaskName.text.toString(),
+                            "status" to b,
+                            "notes" to this.binding.notes.text.toString(),
+                            "category" to this.binding.etCat.text.toString(),
+                            "todoDate" to timestamp
+                        )
+
+                        doc.reference.update(newData).addOnSuccessListener {
+                            Toast.makeText(this, "Task Updated!", Toast.LENGTH_SHORT).show()
+                        }
                     }
-
                 }
 
             }
@@ -94,14 +136,31 @@ class EditTaskActivity : AppCompatActivity() {
             query2.get().addOnSuccessListener { documents ->
                 if(!documents.isEmpty){
                     val doc = documents.first()
-                    val newData = mapOf(
-                        "task" to this.binding.tvTaskName.text.toString(),
-                        "status" to b,
-                        "notes" to this.binding.notes.text.toString(),
-                        "category" to this.binding.etCat.text.toString()
-                    )
+                    if(this.binding.etDateTodo.text.toString() == sStamp){
+                        val newData = mapOf(
+                            "task" to this.binding.tvTaskName.text.toString(),
+                            "status" to b,
+                            "notes" to this.binding.notes.text.toString(),
+                            "category" to this.binding.etCat.text.toString(),
+                            "todoDate" to sStamp
+                        )
 
-                    doc.reference.update(newData)
+                        doc.reference.update(newData)
+                    } else {
+
+                        val dateTime = dateFormat.parse(date)
+                        val timestamp = Timestamp(dateTime!!)
+
+                        val newData = mapOf(
+                            "task" to this.binding.tvTaskName.text.toString(),
+                            "status" to b,
+                            "notes" to this.binding.notes.text.toString(),
+                            "category" to this.binding.etCat.text.toString(),
+                            "todoDate" to timestamp
+                        )
+
+                        doc.reference.update(newData)
+                    }
 
                 }
 

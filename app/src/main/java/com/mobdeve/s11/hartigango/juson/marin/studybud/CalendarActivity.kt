@@ -26,11 +26,15 @@ class CalendarActivity : AppCompatActivity() {
         binding.dashboardNav.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            finish()
         }
 
         binding.listNav.setOnClickListener {
             val intent = Intent(this, ListsActivity:: class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            finish()
         }
     }
 }
