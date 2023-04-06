@@ -10,8 +10,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -25,13 +23,16 @@ import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ListModel
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.TaskModel
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DashboardActivity: AppCompatActivity() {
     private lateinit var reminderData: ArrayList<ReminderModel>
     private lateinit var reminderAdapter: ReminderAdapter
-    private lateinit var taskData: ArrayList<TaskModel>
     private lateinit var taskAdapter: TaskAdapter
-    private lateinit var reminderRecycler: RecyclerView
+    private lateinit var taskData: ArrayList<TaskModel>
+     private lateinit var reminderRecycler: RecyclerView
     private lateinit var recyclerView2: RecyclerView
     private lateinit var binding: ActivityDashboardBinding
 
@@ -91,13 +92,12 @@ class DashboardActivity: AppCompatActivity() {
         this.reminderRecycler = binding.recycleReminder
         setupReminderRecycler(docId!!)
 
-        this.recyclerView2 = binding.recycleTasks
-        this.taskAdapter = TaskAdapter(taskData)
-        this.recyclerView2.adapter = taskAdapter
-        this.recyclerView2.layoutManager = LinearLayoutManager(this)
 
-        val db = Utility.getCollectionReferenceForLists(docId)
-        val query = db.whereEqualTo("name", "remindersList").orderBy( "dateTime", Query.Direction.ASCENDING)
+        this.recyclerView2 = binding.recycleTasks
+        setupTaskRecycler(docId)
+
+        val db = Utility.getCollectionReferenceForReminders(docId)
+        val query = db.whereEqualTo("name", "remindersList")
         query.get().addOnSuccessListener { reminder ->
             if(reminder.isEmpty){
                 initiateRemindersList(docId)
@@ -107,8 +107,24 @@ class DashboardActivity: AppCompatActivity() {
 
     }
 
+    private fun setupTaskRecycler(docId: String) {
+        val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+        val now = Date()
+        val formattedDate = dateFormat.format(now)
+        val parsedDate = dateFormat.parse(formattedDate)!!
+        val timestamp = Timestamp(parsedDate)
+
+        val query = Utility.getCollectionReferenceForAllTasks(docId).whereEqualTo("todoDate", timestamp)
+        val options : FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
+            .setQuery(query, TaskModel::class.java).build()
+        recyclerView2.layoutManager = LinearLayoutManager(this)
+        taskAdapter = TaskAdapter(options, this)
+        recyclerView2.adapter = taskAdapter
+    }
+
+
     private fun setupReminderRecycler(docId: String) {
-        val query = Utility.getCollectionReferenceForReminders(docId)
+        val query = Utility.getCollectionReferenceForReminders(docId).orderBy("dateTime", Query.Direction.ASCENDING)
         val options: FirestoreRecyclerOptions<ReminderModel> = FirestoreRecyclerOptions.Builder<ReminderModel>()
             .setQuery(query, ReminderModel::class.java).build()
 
@@ -118,26 +134,26 @@ class DashboardActivity: AppCompatActivity() {
     }
 
     private fun initiateRemindersList(docID: String){
-        val reminderList = ListModel("Reminders", sp.getString("EMAIL", "N/A")!!, Timestamp.now())
+        val reminderList = ListModel(" Reminders ", sp.getString("EMAIL", "N/A")!!, Timestamp.now())
 
         Utility.setList(reminderList, docID)
     }
 
     override fun onStart() {
         super.onStart()
-
+        taskAdapter.startListening()
         reminderAdapter.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-
+        taskAdapter.stopListening()
         reminderAdapter.stopListening()
     }
 
     override fun onResume() {
         super.onResume()
-
+        taskAdapter.notifyDataSetChanged()
         reminderAdapter.notifyDataSetChanged()
     }
 

@@ -35,24 +35,25 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
-
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // User is already signed in
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com")
             .requestEmail()
             .build()
-        // "136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com"
-        // getString(R.string.default_web_client_id)
+
         gsc = GoogleSignIn.getClient(this, gso)
         gsc.signOut()
 
         binding.btnCont.setOnClickListener(View.OnClickListener {
-        //val intent = Intent(this, InfoActivity::class.java)
-        //startActivity(intent)
-
             signInGoogle()
         })
-
     }
 
 

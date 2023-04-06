@@ -18,11 +18,11 @@
         android:src="@drawable/vector_5" />
 
     <EditText
-        android:id="@+id/tvTaskName"
-        android:layout_width="wrap_content"
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
-        android:text="CCAPDEV User Interface"
+        android:hint="Task"
         android:textColor="#000000"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTaskName" />
+        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 
     <TextView
         android:id="@+id/remindText"
@@ -53,7 +53,7 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/dateText"
         app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/etDateTodo" />
+        app:layout_constraintTop_toBottomOf="@+id/etTodoDate" />
 
     <TextView
         android:id="@+id/statusText"
@@ -63,19 +63,21 @@
         android:text="Status"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etCat"
+        app:layout_constraintEnd_toEndOf="@+id/etCategory"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/etCat" />
+        app:layout_constraintTop_toBottomOf="@+id/etCategory" />
 
-    <TextView
-        android:id="@+id/etDateTodo"
+    <EditText
+        android:id="@+id/etTodoDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:ems="17"
         android:inputType="date"
-        android:hint="March 16, 2023"
+        android:clickable="true"
+        android:focusable="false"
+
         android:background="@drawable/textbox"
         android:layout_marginLeft="-15px"
         android:paddingStart="30px"
@@ -85,11 +87,10 @@
         app:layout_constraintTop_toBottomOf="@+id/dateText" />
 
     <TextView
-        android:id="@+id/etCat"
+        android:id="@+id/etCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="17"
-        android:text="Category"
         android:background="@drawable/textbox"
         android:layout_marginLeft="-15px"
         android:paddingStart="30px"
@@ -103,29 +104,28 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/etCat"
+        app:layout_constraintEnd_toEndOf="@+id/etCategory"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCat"
+        app:layout_constraintStart_toStartOf="@+id/etCategory"
         app:layout_constraintTop_toBottomOf="@+id/statusText">
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="79dp"
+            android:layout_height="29dp"
             android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:src="@drawable/inprogress" />
 
         <TextView
-            android:id="@+id/status"
-            android:layout_width="239dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/etStatus"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="-15px"
             android:background="@drawable/textbox"
             android:ems="15"
-            android:paddingStart="30px"
-            android:text="In Progress" />
+            android:paddingStart="30px" />
     </LinearLayout>
 
     <TextView
@@ -136,22 +136,23 @@
         android:text="Notes"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/status"
+        app:layout_constraintEnd_toEndOf="@+id/etStatus"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/dateText"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
     <EditText
-        android:id="@+id/edNote"
+        android:id="@+id/etNote"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/textbox"
         android:ems="17"
         android:inputType="text"
         android:paddingStart="30px"
+        android:hint="Go to Pinterest for design inspiration"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCat"
+        app:layout_constraintStart_toStartOf="@+id/etCategory"
         app:layout_constraintTop_toBottomOf="@+id/notes" />
 
     <Button
@@ -164,7 +165,7 @@
         app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edNote" />
+        app:layout_constraintTop_toBottomOf="@+id/etNote" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

@@ -23,20 +23,31 @@ class ListsAdapter(options: FirestoreRecyclerOptions<ListModel>, context: Contex
         private val docId = sp.getString("DOCID", "N/A")
 
         fun bindData(list: ListModel){
-            if(list.name == "Reminders"){
+            if(list.name == " Reminders "){
                 val docRef =  Utility.getCollectionReferenceForLists(docId!!).document(list.name).collection("remindersList")
                 var count = 0
                 docRef.get().addOnSuccessListener {
                     count = it.size()
 
                     binding.listName.text = list.name
-                    binding.itemCount.text = count.toString()
+                    if(count != 1){ binding.itemCount.text = "$count Items" } else { binding.itemCount.text = "$count Item"}
                 }.addOnFailureListener {
                     binding.listName.text = list.name
-                    binding.itemCount.text = count.toString()
+                    if(count != 1){ binding.itemCount.text = "$count Items" } else { binding.itemCount.text = "$count Item"}
                 }
             } else {
-                // TODO: Implement for Tasks
+                val docRef =  Utility.getCollectionReferenceForLists(docId!!).document(list.name).collection("tasksList")
+                var count = 0
+
+                docRef.get().addOnSuccessListener {
+                    count = it.size()
+
+                    binding.listName.text = list.name
+                    if(count != 1){ binding.itemCount.text = "$count Items" } else { binding.itemCount.text = "$count Item"}
+                }.addOnFailureListener {
+                    binding.listName.text = list.name
+                    if(count != 1){ binding.itemCount.text = "$count Items" } else { binding.itemCount.text = "$count Item"}
+                }
             }
 
 
@@ -54,11 +65,12 @@ class ListsAdapter(options: FirestoreRecyclerOptions<ListModel>, context: Contex
     override fun onBindViewHolder(holder: ListsViewHolder, position: Int, list: ListModel) {
         holder.bindData(list)
         holder.itemView.setOnClickListener {
-            if(holder.binding.listName.text == "Reminders"){
+            if(holder.binding.listName.text == " Reminders "){
                 val intent = Intent(holder.itemView.context, RemindersActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             } else {
                 val intent = Intent(holder.itemView.context, TasksActivity::class.java)
+                intent.putExtra("category", list.name)
                 holder.itemView.context.startActivity(intent)
             }
         }

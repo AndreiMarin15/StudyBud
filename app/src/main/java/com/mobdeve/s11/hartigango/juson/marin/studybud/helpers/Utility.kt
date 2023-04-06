@@ -1,13 +1,8 @@
 package com.mobdeve.s11.hartigango.juson.marin.studybud.helpers
 
-import android.content.Context
-import android.content.SharedPreferences
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.Timestamp
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,25 +19,35 @@ class Utility {
             return FirebaseFirestore.getInstance().collection("userInfo").document(docID).collection("lists")
         }
 
+
+
         fun getCollectionReferenceForReminders(docID: String): CollectionReference {
 
             return  FirebaseFirestore.getInstance().collection("userInfo").document(docID).collection("lists")
-                .document("Reminders").collection("remindersList")
+                .document(" Reminders ").collection("remindersList")
         }
 
 
-        fun getCollectionReferenceForTaskList(docID: String): CollectionReference {
+        fun getCollectionReferenceForTasks(category: String, docID: String): CollectionReference {
             return  FirebaseFirestore.getInstance().collection("userInfo").document(docID).collection("lists")
-                .document("taskList").collection("tasks")
+                .document(category).collection("tasksList")
         }
 
-        fun getCollectionReferenceForTasks(category: String, task: String, docID: String): CollectionReference {
-            return  getCollectionReferenceForTaskList(docID).document(category).collection(task)
+        fun getCollectionReferenceForAllTasks(docID: String): CollectionReference {
+            return  FirebaseFirestore.getInstance().collection("userInfo").document(docID).collection("allTasks")
+
         }
 
-        fun setTask (category: String, task: String, subTask: TaskModel, docID: String){
-            val docRef: DocumentReference = getCollectionReferenceForTasks(category, task, docID).document()
-            docRef.set(subTask)
+        fun setTask (category: String, task: TaskModel, docID: String){
+            val docRef: DocumentReference = getCollectionReferenceForTasks(category, docID).document()
+            val docRef2: DocumentReference = getCollectionReferenceForAllTasks(docID).document(docRef.id)
+            docRef.set(task)
+            docRef2.set(task)
+        }
+
+        fun setReminder (reminder: ReminderModel, docID: String) {
+            val docRef: DocumentReference = getCollectionReferenceForReminders(docID).document()
+            docRef.set(reminder)
         }
 
 
@@ -57,15 +62,12 @@ class Utility {
             docRef.set(list)
         }
 
-        fun setReminder (reminder: ReminderModel, docID: String) {
-            val docRef: DocumentReference = getCollectionReferenceForReminders(docID).document()
-            docRef.set(reminder)
-        }
 
-        fun setTaskList (taskList: TaskListModel, docID: String) {
-            val docRef: DocumentReference = getCollectionReferenceForTaskList(docID).document()
-            docRef.set(taskList)
-        }
+
+      //  fun setTaskList (taskList: TaskListModel, docID: String) {
+      //      val docRef: DocumentReference = getCollectionReferenceForTaskList(docID).document()
+      //      docRef.set(taskList)
+      //  }
 
         fun timestampToString(timestamp: Timestamp): String{
             val dateFormat = SimpleDateFormat("MMMM d, yyyy 'at' h:mm a", Locale.US)

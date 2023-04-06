@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.Query
 import com.mobdeve.s11.hartigango.juson.marin.studybud.*
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityListsBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
@@ -58,13 +59,17 @@ class ListsActivity : AppCompatActivity() {
 
     private fun setupRecyclerView(docID: String) {
         val query = Utility.getCollectionReferenceForLists(docID)
+            .orderBy("name", Query.Direction.ASCENDING)
+
         val options: FirestoreRecyclerOptions<ListModel> = FirestoreRecyclerOptions.Builder<ListModel>()
-            .setQuery(query, ListModel::class.java).build()
+            .setQuery(query, ListModel::class.java)
+            .build()
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         listsAdapter = ListsAdapter(options, this, docID)
         recyclerView.adapter = listsAdapter
     }
+
 
     override fun onStart() {
         super.onStart()
