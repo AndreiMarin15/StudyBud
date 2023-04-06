@@ -134,7 +134,8 @@ class DashboardActivity: AppCompatActivity() {
         }
     }
 
-    fun setupProgress(docId: String){
+     fun setupProgress(docId: String){
+
         var inProgress = 0
         var completed = 0
         val query = Utility.getCollectionReferenceForAllTasks(docId)

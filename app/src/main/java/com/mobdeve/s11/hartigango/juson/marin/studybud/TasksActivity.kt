@@ -37,10 +37,6 @@ class TasksActivity : AppCompatActivity() {
 
         binding.titleTV.text = category
 
-        //    binding.imageView12.setOnClickListener{
-        //        val intent = Intent(this, EditTaskActivity:: class.java)
-        //        startActivity(intent)
-        //    }
         binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))

@@ -89,8 +89,6 @@ class EditTaskActivity : AppCompatActivity() {
                 .whereEqualTo("category", category)
                 .whereEqualTo("task", taskName)
                 .limit(1)
-            // lalagay pag parse if nag update si time
-
 
             var b = false
             if(binding.status.text == "Done"){
@@ -114,7 +112,7 @@ class EditTaskActivity : AppCompatActivity() {
                         }
                     } else {
 
-                        val dateTime = dateFormat.parse(date)
+                        val dateTime = dateFormat.parse(sDate)
                         val timestamp = Timestamp(dateTime!!)
 
                         val newData = mapOf(
@@ -148,7 +146,7 @@ class EditTaskActivity : AppCompatActivity() {
                         doc.reference.update(newData)
                     } else {
 
-                        val dateTime = dateFormat.parse(date)
+                        val dateTime = dateFormat.parse(sDate)
                         val timestamp = Timestamp(dateTime!!)
 
                         val newData = mapOf(

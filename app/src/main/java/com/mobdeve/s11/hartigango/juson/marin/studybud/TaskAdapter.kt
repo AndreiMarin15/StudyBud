@@ -28,7 +28,6 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
             binding.task.text = task.task
             binding.task.isChecked = task.status
 
-
         }
     }
 
@@ -62,10 +61,12 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
                 val query = Utility.getCollectionReferenceForTasks(task.category, id)
                     .whereEqualTo("category", task.category)
                     .whereEqualTo("task", task.task)
+                    .whereEqualTo("todoDate", task.todoDate)
                     .limit(1)
                 val query2 = Utility.getCollectionReferenceForAllTasks(id)
                     .whereEqualTo("category", task.category)
                     .whereEqualTo("task", task.task)
+                    .whereEqualTo("todoDate", task.todoDate)
                     .limit(1)
 
                 query.get().addOnSuccessListener { documents ->
@@ -99,10 +100,12 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
                 val query = Utility.getCollectionReferenceForTasks(task.category, id)
                     .whereEqualTo("category", task.category)
                     .whereEqualTo("task", task.task)
+                    .whereEqualTo("todoDate", task.todoDate)
                     .limit(1)
                 val query2 = Utility.getCollectionReferenceForAllTasks(id)
                     .whereEqualTo("category", task.category)
                     .whereEqualTo("task", task.task)
+                    .whereEqualTo("todoDate", task.todoDate)
                     .limit(1)
 
                 query.get().addOnSuccessListener { documents ->

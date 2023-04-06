@@ -6,3 +6,4 @@
         android:fromXDelta="0%"
         android:toXDelta="-100%"/>
 </set>
+
