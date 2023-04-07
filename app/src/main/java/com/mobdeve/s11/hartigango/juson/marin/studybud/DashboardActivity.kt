@@ -93,9 +93,6 @@ class DashboardActivity: AppCompatActivity() {
             finish()
         }
 
-        this.reminderData = ReminderHelper.initializeData()
-        this.taskData = TaskHelper.initializeData()
-
         this.reminderRecycler = binding.recycleReminder
         setupReminderRecycler(docId)
 
@@ -115,21 +112,7 @@ class DashboardActivity: AppCompatActivity() {
 
     }
 
-    private fun setupTaskRecycler(docId: String) {
-        val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
-        val now = Date()
-        val formattedDate = dateFormat.format(now)
-        val parsedDate = dateFormat.parse(formattedDate)!!
-        val timestamp = Timestamp(parsedDate)
 
-        val query = Utility.getCollectionReferenceForAllTasks(docId).whereEqualTo("todoDate", timestamp)
-        val options : FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
-            .setQuery(query, TaskModel::class.java).build()
-        recyclerView2.layoutManager = LinearLayoutManager(this)
-        taskAdapter = TaskAdapter(options, this, docId, this)
-        recyclerView2.adapter = taskAdapter
-
-    }
 
      fun setupProgress(docId: String){
 
@@ -155,6 +138,21 @@ class DashboardActivity: AppCompatActivity() {
         }
     }
 
+    private fun setupTaskRecycler(docId: String) {
+        val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+        val now = Date()
+        val formattedDate = dateFormat.format(now)
+        val parsedDate = dateFormat.parse(formattedDate)!!
+        val timestamp = Timestamp(parsedDate)
+
+        val query = Utility.getCollectionReferenceForAllTasks(docId).whereEqualTo("todoDate", timestamp)
+        val options : FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
+            .setQuery(query, TaskModel::class.java).build()
+        recyclerView2.layoutManager = LinearLayoutManager(this)
+        taskAdapter = TaskAdapter(options, this, docId, this)
+        recyclerView2.adapter = taskAdapter
+
+    }
 
     private fun setupReminderRecycler(docId: String) {
 

@@ -19,6 +19,8 @@ class ReminderAdapter(options: FirestoreRecyclerOptions<ReminderModel>, context:
         fun bindData(reminder: ReminderModel){
             binding.reminderTitle.text = reminder.title
             binding.reminderTime.text = Utility.timestampToString(reminder.dateTime)
+
+
         }
 
 
@@ -35,6 +37,7 @@ class ReminderAdapter(options: FirestoreRecyclerOptions<ReminderModel>, context:
 
     override fun onBindViewHolder(holder: ReminderViewHolder, position: Int, reminder: ReminderModel) {
         holder.bindData(reminder)
+        //hindi nag bibind pag galing kay calendar
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, ReminderDetailsActivity::class.java)
             intent.putExtra("title", reminder.title)
