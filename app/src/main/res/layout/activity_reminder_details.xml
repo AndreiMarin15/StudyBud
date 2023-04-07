@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Date and Time"
+        android:text="Date"
         android:textColor="#000000"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,15 +43,28 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+    <TextView
         android:id="@+id/remindText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:text="Remind me.."
         android:textColor="#000000"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
 
     <TextView
         android:id="@+id/notesText"
@@ -66,23 +79,39 @@
         app:layout_constraintStart_toStartOf="@+id/dateText"
         app:layout_constraintTop_toBottomOf="@+id/inputRemind" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <TextView
+        android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="-15px"
         android:layout_marginTop="1dp"
+        android:background="@drawable/textbox"
+
         android:ems="17"
         android:inputType="date"
-
-        android:background="@drawable/textbox"
-        android:layout_marginLeft="-15px"
         android:paddingStart="30px"
         app:layout_constraintEnd_toEndOf="@+id/dateText"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="@+id/dateText"
         app:layout_constraintTop_toBottomOf="@+id/dateText" />
 
-    <EditText
+    <TextView
+        android:id="@+id/editTextTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-5dp"
+
+        android:layout_marginTop="1dp"
+        android:background="@drawable/textbox"
+        android:ems="17"
+        android:inputType="date"
+        android:paddingStart="30px"
+        app:layout_constraintEnd_toEndOf="@+id/timeText"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/timeText"
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+    <TextView
         android:id="@+id/inputRemind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,7 +121,7 @@
         android:paddingStart="30px"
         app:layout_constraintEnd_toEndOf="@+id/remindText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate"
         app:layout_constraintTop_toBottomOf="@+id/remindText" />
 
     <EditText
@@ -105,7 +134,7 @@
         android:paddingStart="30px"
         app:layout_constraintEnd_toEndOf="@+id/notesText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate"
         app:layout_constraintTop_toBottomOf="@+id/notesText" />
 
     <Button

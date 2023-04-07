@@ -40,14 +40,20 @@ class Utility {
 
         }
 
-        fun updateTask(category: String, docID: String, document: String, data: Map<String, Boolean>): Task<Void> {
+        fun updateTask(category: String, docID: String, document: String, data: Map<String, Boolean>?, data2: Map<String, Any>?): Task<Void> {
             val docRef: DocumentReference = getCollectionReferenceForTasks(category, docID).document(document)
             val docRef2: DocumentReference = getCollectionReferenceForAllTasks(docID).document(document)
 
-            val updateTask1 = docRef.update(data)
-            val updateTask2 = docRef2.update(data)
+            if(data != null) {
+                val updateTask1 = docRef.update(data)
+                val updateTask2 = docRef2.update(data)
+                return Tasks.whenAll(updateTask1, updateTask2)
+            } else {
+                val updateTask1 = docRef.update(data2!!)
+                val updateTask2 = docRef2.update(data2)
+                return Tasks.whenAll(updateTask1, updateTask2)
+            }
 
-            return Tasks.whenAll(updateTask1, updateTask2)
         }
 
         fun setTask (category: String, task: TaskModel, docID: String){

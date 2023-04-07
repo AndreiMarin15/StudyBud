@@ -34,6 +34,11 @@ class ReminderAdapter(options: FirestoreRecyclerOptions<ReminderModel>, context:
         holder.bindData(reminder)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, ReminderDetailsActivity::class.java)
+            intent.putExtra("title", reminder.title)
+            intent.putExtra("dateTime", reminder.dateTime.toString())
+            intent.putExtra("remTime", reminder.reminder.toString())
+            intent.putExtra("notes", reminder.notes)
+
             holder.itemView.context.startActivity(intent)
         }
     }

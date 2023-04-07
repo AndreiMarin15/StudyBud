@@ -56,7 +56,14 @@ class ReminderAddActivity : AppCompatActivity() {
             val minute = calendar.get(Calendar.MINUTE)
 
             val timePickerDialog = TimePickerDialog(this, { _, h, m ->
-                time = "$h:$m"
+                val cal = Calendar.getInstance()
+                cal.set(Calendar.HOUR_OF_DAY, h)
+                cal.set(Calendar.MINUTE, m)
+                cal.set(Calendar.SECOND, 0)
+
+                val timeFormat = SimpleDateFormat("hh:mm:ss a", Locale.getDefault())
+
+                time = timeFormat.format(cal.time)
                 binding.etTime.setText(time)
             }, hour, minute, false)
 
@@ -69,7 +76,14 @@ class ReminderAddActivity : AppCompatActivity() {
             val minute = calendar.get(Calendar.MINUTE)
 
             val timePickerDialog = TimePickerDialog(this, { _, h, m ->
-                remind = "$h:$m"
+                val cal = Calendar.getInstance()
+                cal.set(Calendar.HOUR_OF_DAY, h)
+                cal.set(Calendar.MINUTE, m)
+                cal.set(Calendar.SECOND, 0)
+
+                val timeFormat = SimpleDateFormat("hh:mm:ss a", Locale.getDefault())
+
+                remind = timeFormat.format(cal.time)
                 binding.etRemind.setText(remind)
             }, hour, minute, false)
 
@@ -84,7 +98,7 @@ class ReminderAddActivity : AppCompatActivity() {
 
             if(dateText.isNotEmpty() && nameText.isNotEmpty() && timeText.isNotEmpty() && remText.isNotEmpty()){
 
-                val dateFormat = SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.US)
+                val dateFormat = SimpleDateFormat("MM/dd/yyyy hh:mm:ss a", Locale.getDefault())
 
                 val dateTime = dateFormat.parse("$date $time")
 

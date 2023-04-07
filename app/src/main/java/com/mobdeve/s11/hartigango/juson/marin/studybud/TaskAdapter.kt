@@ -44,7 +44,7 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
                             val documents = query.get().await()
                             if (!documents.isEmpty) {
                                 val doc = documents.first()
-                                Utility.updateTask(task.category, id, doc.id, newData).await()
+                                Utility.updateTask(task.category, id, doc.id, newData, null).await()
                             }
                         } catch (e: Exception) {
                             e.printStackTrace()
