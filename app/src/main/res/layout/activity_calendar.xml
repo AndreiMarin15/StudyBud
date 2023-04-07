@@ -184,10 +184,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/remRecycle"
-        android:layout_width="340dp"
-        android:layout_height="111dp"
-        android:maxWidth="340dp"
-        android:maxHeight="110dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:maxWidth="300dp"
+        android:maxHeight="100dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

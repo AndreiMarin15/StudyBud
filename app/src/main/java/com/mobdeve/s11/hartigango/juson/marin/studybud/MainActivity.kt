@@ -15,6 +15,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
+        FirebaseApp.initializeApp(this)
         val currentUser = auth.currentUser
         if (currentUser != null) {
             // User is already signed in
