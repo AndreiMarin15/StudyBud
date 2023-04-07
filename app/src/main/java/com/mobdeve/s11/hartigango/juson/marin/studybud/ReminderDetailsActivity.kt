@@ -28,8 +28,6 @@ class ReminderDetailsActivity : AppCompatActivity() {
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
         val docId = sp.getString("DOCID", "DOCID")!!
 
-        var dateTime = "1/1/2000 at 12:00:00 AM UTC+8"
-        var dateTime2 = "1/1/2000 at 12:00:00 AM UTC+8"
 
         val title = intent.getStringExtra("title")!!
         val notes = intent.getStringExtra("notes")!!

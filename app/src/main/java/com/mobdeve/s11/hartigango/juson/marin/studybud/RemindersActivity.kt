@@ -48,7 +48,7 @@ class RemindersActivity : AppCompatActivity() {
             .setQuery(query, ReminderModel::class.java).build()
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        reminderAdapter = ReminderAdapter(options, this)
+        reminderAdapter = ReminderAdapter(options, this, docId)
         recyclerView.adapter = reminderAdapter
 
     }

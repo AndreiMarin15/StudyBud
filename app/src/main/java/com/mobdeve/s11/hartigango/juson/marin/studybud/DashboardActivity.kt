@@ -162,7 +162,7 @@ class DashboardActivity: AppCompatActivity() {
             .setQuery(query, ReminderModel::class.java).build()
 
         reminderRecycler.layoutManager = LinearLayoutManager(this)
-        reminderAdapter = ReminderAdapter(options, this)
+        reminderAdapter = ReminderAdapter(options, this, docId)
         reminderRecycler.adapter = reminderAdapter
     }
 

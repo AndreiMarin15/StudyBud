@@ -7,6 +7,15 @@
     android:paddingBottom="10dp"
     android:layout_marginHorizontal="5dp">
 
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/reminderBtnLayout"
         android:layout_width="390dp"
@@ -20,29 +29,28 @@
         android:paddingEnd="200dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/listName"
-            android:layout_width="370dp"
+            android:layout_width="271dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
             android:backgroundTint="#114B5F"
             android:fontFamily="sans-serif-medium"
             android:text="Reminders"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:layout_marginHorizontal="5dp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/itemCount"
-            android:layout_width="370dp"
+            android:layout_width="274dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
             android:text="3 Items"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:layout_marginHorizontal="5dp"/>
+            android:textSize="15sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

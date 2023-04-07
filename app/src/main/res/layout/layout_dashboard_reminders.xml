@@ -67,6 +67,14 @@
                 android:paddingStart="15dp"
                 android:text="Today 12:45 PM"
                 android:textColor="#FFFFFF" />
+
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_delete_24"
+            android:background="@color/black"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

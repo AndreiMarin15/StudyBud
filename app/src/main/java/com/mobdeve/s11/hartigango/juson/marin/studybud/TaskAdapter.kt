@@ -16,6 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import okhttp3.internal.Util
 
 class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context, docId: String, dbActivity: DashboardActivity?): FirestoreRecyclerAdapter<TaskModel, TaskAdapter.TaskViewHolder>(options) {
     val id = docId
@@ -85,6 +86,23 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
 
         act?.setupProgress(id)
 
+        holder.binding.btnDelete.setOnClickListener {
+            Utility.getCollectionReferenceForTasks(task.category, id)
+                .whereEqualTo("category", task.category)
+                .whereEqualTo("task", task.task)
+                .whereEqualTo("todoDate", task.todoDate)
+                .limit(1)
+                .get()
+                .addOnSuccessListener {document ->
+                    if(!document.isEmpty){
+                        val doc = document.first()
+
+                        Utility.deleteTask(task.category, id, doc.id)
+
+                        Toast.makeText(holder.itemView.context, "Task Deleted", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
 
     }
 

@@ -46,12 +46,13 @@ class TasksActivity : AppCompatActivity() {
         binding.calendarNav.setOnClickListener {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
-
+            finish()
         }
 
         binding.dashboardNav.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.addTasksBtn.setOnClickListener {

@@ -56,6 +56,14 @@ class Utility {
 
         }
 
+        fun deleteTask(category: String, docID: String, document: String,){
+            val docRef: DocumentReference = getCollectionReferenceForTasks(category, docID).document(document)
+            val docRef2: DocumentReference = getCollectionReferenceForAllTasks(docID).document(document)
+
+            docRef.delete()
+            docRef2.delete()
+        }
+
         fun setTask (category: String, task: TaskModel, docID: String){
             val docRef: DocumentReference = getCollectionReferenceForTasks(category, docID).document()
             val docRef2: DocumentReference = getCollectionReferenceForAllTasks(docID).document(docRef.id)
