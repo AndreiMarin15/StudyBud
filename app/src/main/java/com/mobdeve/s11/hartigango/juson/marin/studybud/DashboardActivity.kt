@@ -157,7 +157,16 @@ class DashboardActivity: AppCompatActivity() {
 
 
     private fun setupReminderRecycler(docId: String) {
-        val query = Utility.getCollectionReferenceForReminders(docId).orderBy("dateTime", Query.Direction.ASCENDING)
+
+        val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+        val now = Date()
+        val formattedDate = dateFormat.format(now)
+        val parsedDate = dateFormat.parse(formattedDate)!!
+        val timestamp = Timestamp(parsedDate)
+
+        val query = Utility.getCollectionReferenceForReminders(docId)
+            .whereGreaterThanOrEqualTo("dateTime", timestamp)
+            .orderBy("dateTime", Query.Direction.ASCENDING)
         val options: FirestoreRecyclerOptions<ReminderModel> = FirestoreRecyclerOptions.Builder<ReminderModel>()
             .setQuery(query, ReminderModel::class.java).build()
 
