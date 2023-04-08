@@ -39,12 +39,6 @@ class DashboardActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var sp: SharedPreferences
 
-    private val viewNoteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result: ActivityResult -> if(result.resultCode == RESULT_OK){
-        this.reminderAdapter.notifyItemChanged(0)
-    }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.binding = ActivityDashboardBinding.inflate(layoutInflater)
@@ -60,20 +54,22 @@ class DashboardActivity: AppCompatActivity() {
         val program = sp.getString("PROGRAM", "PROGRAM")
         docId = sp.getString("DOCID", null)!!
 
-        // val profilepic = intent.getStringExtra("profilepic")
+
 
         binding.userText.text = displayName
         binding.courseText.text = program
 
         setupProgress(docId)
 
-        // binding.profilepic.setImageURI(Uri.parse(profilepic))
+
 
         binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))
             finish()
         }
+
+
 
         binding.listNav.setOnClickListener (View.OnClickListener {
 
