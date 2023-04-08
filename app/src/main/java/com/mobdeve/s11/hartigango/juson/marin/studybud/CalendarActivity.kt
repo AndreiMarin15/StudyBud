@@ -56,7 +56,7 @@ class CalendarActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-        val docId = sp.getString("DOCID", "DOCID")!!
+        val docId = sp.getString("DOCID", null)!!
 
         val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
 
@@ -66,7 +66,6 @@ class CalendarActivity : AppCompatActivity() {
         val selectedDateObject = dateFormat.parse(selectedDateString)
         val timestamp = Timestamp(selectedDateObject!!
         )
-       // Toast.makeText(this, timestamp.toString(), Toast.LENGTH_SHORT).show()
 
         reminderRecycler = binding.remRecycle
         setupReminderRecycler(docId, timestamp)
@@ -85,8 +84,6 @@ class CalendarActivity : AppCompatActivity() {
             val pDate = dateFormat.parse(fDate)!!
             val tstamp = Timestamp(pDate)
 
-          //  Toast.makeText(this, tstamp.toString(), Toast.LENGTH_SHORT).show()
-
             setupTaskRecycler(docId, tstamp)
 
             setupReminderRecycler(docId, tstamp)
@@ -96,8 +93,6 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     private fun setupReminderRecycler(docId: String, timestamp: Timestamp) {
-
-
         val calendar = Calendar.getInstance()
         calendar.time = timestamp.toDate()
         calendar.add(Calendar.DAY_OF_MONTH, 1)

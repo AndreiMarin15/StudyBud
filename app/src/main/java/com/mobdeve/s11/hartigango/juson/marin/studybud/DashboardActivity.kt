@@ -30,10 +30,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class DashboardActivity: AppCompatActivity() {
-    private lateinit var reminderData: ArrayList<ReminderModel>
     private lateinit var reminderAdapter: ReminderAdapter
     private lateinit var taskAdapter: TaskAdapter
-    private lateinit var taskData: ArrayList<TaskModel>
     private lateinit var reminderRecycler: RecyclerView
     private lateinit var recyclerView2: RecyclerView
     private lateinit var binding: ActivityDashboardBinding
@@ -60,7 +58,7 @@ class DashboardActivity: AppCompatActivity() {
 
         val displayName = sp.getString("NAME", "NAME")
         val program = sp.getString("PROGRAM", "PROGRAM")
-        docId = sp.getString("DOCID", "DOCID")!!
+        docId = sp.getString("DOCID", null)!!
 
         // val profilepic = intent.getStringExtra("profilepic")
 

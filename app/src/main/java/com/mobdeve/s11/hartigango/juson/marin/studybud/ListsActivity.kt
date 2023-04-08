@@ -29,7 +29,7 @@ class ListsActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-        val docId = sp.getString("DOCID", "N/A")
+        val docId = sp.getString("DOCID", null)
 
         setupRecyclerView(docId!!)
 

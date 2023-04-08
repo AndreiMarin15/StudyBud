@@ -29,9 +29,9 @@ class AddTaskActivity : AppCompatActivity() {
 
         this.binding.createListbtn.setOnClickListener{
             val name = binding.editListName.text.toString()
-            val owner = sp.getString("EMAIL", "N/A")
+            val owner = sp.getString("EMAIL", null)
 
-            val docId = sp.getString("DOCID", "N/A")
+            val docId = sp.getString("DOCID", null)
             val timestamp = Timestamp(Timestamp.now().toDate())
 
             val list = ListModel(name.trim(), owner!!, timestamp)
@@ -44,16 +44,18 @@ class AddTaskActivity : AppCompatActivity() {
         this.binding.calendarNav.setOnClickListener {
             val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
-
+            finish()
         }
 
         binding.dashboardNav.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
+            finish()
         }
         this.binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))
+            finish()
         }
     }
 }

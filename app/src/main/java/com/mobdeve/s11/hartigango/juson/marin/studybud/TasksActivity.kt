@@ -30,7 +30,7 @@ class TasksActivity : AppCompatActivity() {
         val category = intent.getStringExtra("category")!!
         auth = FirebaseAuth.getInstance()
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-        val docId = sp.getString("DOCID", "DOCID")!!
+        val docId = sp.getString("DOCID", null)!!
         recyclerView = binding.taskRecycler
 
         setupRecyclerView(docId, category)

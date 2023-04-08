@@ -20,6 +20,7 @@
         android:id="@+id/timeInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Time"
         android:textColor="#000000"
         android:textSize="16dp"
@@ -29,17 +30,6 @@
         app:layout_constraintTop_toBottomOf="@+id/etDate" />
 
     <TextView
-        android:id="@+id/remindText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Remind me.."
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/timeInput"
-        app:layout_constraintTop_toBottomOf="@+id/etTime" />
-
-    <TextView
         android:id="@+id/notesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,10 +37,8 @@
         android:text="Notes"
         android:textColor="#000000"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/etRemind"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/timeInput"
-        app:layout_constraintTop_toBottomOf="@+id/etRemind" />
+        app:layout_constraintTop_toBottomOf="@+id/etTime" />
 
     <EditText
         android:id="@+id/etTime"
@@ -67,20 +55,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/timeInput"
         app:layout_constraintTop_toBottomOf="@+id/timeInput" />
-
-    <EditText
-        android:id="@+id/etRemind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/textbox"
-        android:ems="17"
-        android:clickable="true"
-        android:focusable="false"
-        android:paddingStart="30px"
-        app:layout_constraintEnd_toEndOf="@+id/remindText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etTime"
-        app:layout_constraintTop_toBottomOf="@+id/remindText" />
 
     <EditText
         android:id="@+id/etNotes"

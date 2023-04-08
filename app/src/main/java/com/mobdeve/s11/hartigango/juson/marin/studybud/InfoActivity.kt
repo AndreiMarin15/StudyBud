@@ -27,7 +27,7 @@ class InfoActivity : AppCompatActivity(){
 
         val displayName = sp.getString("NAME", "NAME")
         val email = sp.getString("EMAIL", "EMAIL")
-      //  val profilePic = intent.getStringExtra("profilepic")
+
         binding.confirmBtn.setOnClickListener {
             val college = binding.editCollege.text.toString()
             val program = binding.editDegree.text.toString()
@@ -50,7 +50,7 @@ class InfoActivity : AppCompatActivity(){
                         editor.putString("PROGRAM", program)
                         editor.putString("DOCID", docId)
                         editor.apply()
-                        //   intent.putExtra("profilepic", profilePic)
+
                         startActivity(intent)
                     }
                 }

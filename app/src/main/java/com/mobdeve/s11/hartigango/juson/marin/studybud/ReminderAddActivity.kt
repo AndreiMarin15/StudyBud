@@ -30,9 +30,8 @@ class ReminderAddActivity : AppCompatActivity() {
 
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
-        var date: String = "1/1/2000"
-        var time: String = "00:00"
-        var remind: String = "00:00"
+        var date = "1/1/2000"
+        var time = "00:00"
 
 
 
@@ -70,47 +69,25 @@ class ReminderAddActivity : AppCompatActivity() {
             timePickerDialog.show()
         }
 
-        binding.etRemind.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
 
-            val timePickerDialog = TimePickerDialog(this, { _, h, m ->
-                val cal = Calendar.getInstance()
-                cal.set(Calendar.HOUR_OF_DAY, h)
-                cal.set(Calendar.MINUTE, m)
-                cal.set(Calendar.SECOND, 0)
-
-                val timeFormat = SimpleDateFormat("hh:mm:ss a", Locale.getDefault())
-
-                remind = timeFormat.format(cal.time)
-                binding.etRemind.setText(remind)
-            }, hour, minute, false)
-
-            timePickerDialog.show()
-        }
 
         binding.btnSave.setOnClickListener {
             val dateText = binding.etDate.text.toString().trim()
             val nameText = binding.etName.text.toString().trim()
             val timeText = binding.etTime.text.toString().trim()
-            val remText = binding.etRemind.text.toString().trim()
 
-            if(dateText.isNotEmpty() && nameText.isNotEmpty() && timeText.isNotEmpty() && remText.isNotEmpty()){
+
+            if(dateText.isNotEmpty() && nameText.isNotEmpty() && timeText.isNotEmpty()){
 
                 val dateFormat = SimpleDateFormat("MM/dd/yyyy hh:mm:ss a", Locale.getDefault())
 
                 val dateTime = dateFormat.parse("$date $time")
 
-                val remTime = dateFormat.parse("$date $remind")
-
                 val timestamp = Timestamp(dateTime!!)
 
-                val remindstamp = Timestamp(remTime!!)
+                val reminderObj = ReminderModel(binding.etName.text.toString(), timestamp, binding.etNotes.text.toString())
 
-                val reminderObj = ReminderModel(binding.etName.text.toString(), timestamp, remindstamp, binding.etNotes.text.toString())
-
-                Utility.setReminder(reminderObj, sp.getString("DOCID", "N/A")!!)
+                Utility.setReminder(reminderObj, sp.getString("DOCID", null)!!)
                 Toast.makeText(this, "Reminder Added!", Toast.LENGTH_SHORT).show()
                 finish()
 

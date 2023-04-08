@@ -29,7 +29,7 @@ class TaskAddActivity : AppCompatActivity() {
         val category = intent.getStringExtra("category")!!
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
         var date: String = "1/1/2000"
-        val docId = sp.getString("DOCID", "DOCID")!!
+        val docId = sp.getString("DOCID", null)!!
 
         binding.etCategory.text = category
         binding.etStatus.text = "Not yet done"

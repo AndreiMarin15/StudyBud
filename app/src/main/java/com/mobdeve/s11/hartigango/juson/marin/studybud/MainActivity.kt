@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            // User is already signed in
+
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
             finish()
@@ -106,7 +106,6 @@ class MainActivity : AppCompatActivity() {
                         editor.putString("EMAIL", account.email)
                         editor.putString("NAME", account.displayName)
                         editor.apply()
-                        //   intent.putExtra("profilePic", account.photoUrl.toString())
                         startActivity(intent)
                         finish()
                     } else {
@@ -132,7 +131,6 @@ class MainActivity : AppCompatActivity() {
                                     }
                                 }
                             }
-                        //   intent.putExtra("profilePic", account.photoUrl.toString())
 
                     }
 
@@ -145,7 +143,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun verifyDLSUEmail(str: String?): Boolean { //dlsu.edu.ph
-        val n: Int = 11
+        val n = 11
         var lastChars = str
         if (lastChars != null) {
             lastChars = lastChars.substring(lastChars.length - n, lastChars.length)

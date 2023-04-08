@@ -26,7 +26,7 @@ class ReminderDetailsActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-        val docId = sp.getString("DOCID", "DOCID")!!
+        val docId = sp.getString("DOCID", null)!!
 
 
         val title = intent.getStringExtra("title")!!
@@ -36,7 +36,6 @@ class ReminderDetailsActivity : AppCompatActivity() {
         binding.inputNotes.setText(notes)
 
         val remDateTime = intent.getStringExtra("dateTime")!!
-        val notifDateTime = intent.getStringExtra("remTime")!!
 
         val toRegEx = "Timestamp\\(seconds=(\\d+), nanoseconds=(\\d+)\\)".toRegex()
 
@@ -44,10 +43,6 @@ class ReminderDetailsActivity : AppCompatActivity() {
         val rMatchResult = toRegEx.find(remDateTime)
         val rSeconds = rMatchResult!!.groups[1]!!.value.toLong()
         val rNanoSeconds = rMatchResult.groups[2]!!.value.toInt()
-
-        val nMatchResult = toRegEx.find(notifDateTime)
-        val nSeconds = nMatchResult!!.groups[1]!!.value.toLong()
-        val nNanoSeconds = nMatchResult.groups[2]!!.value.toInt()
 
         val remDate = Date(rSeconds * 1000)
 
@@ -63,13 +58,11 @@ class ReminderDetailsActivity : AppCompatActivity() {
 
         val sRemTime = timeFormat.format(remTimestamp.toDate()) // string for date and time
 
-        val notifTimestamp = Timestamp(nSeconds, nNanoSeconds)
 
-        val sNotifTime = timeFormat.format(notifTimestamp.toDate())
 
         binding.editTextDate.text = sDate
         binding.editTextTime.text = sRemTime
-        binding.inputRemind.text = sNotifTime
+
 
         binding.editTextDate.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -103,44 +96,24 @@ class ReminderDetailsActivity : AppCompatActivity() {
             timePickerDialog.show()
         }
 
-        binding.inputRemind.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-
-            val timePickerDialog = TimePickerDialog(this, { _, h, m ->
-                val cal = Calendar.getInstance()
-                cal.set(Calendar.HOUR_OF_DAY, h)
-                cal.set(Calendar.MINUTE, m)
-                cal.set(Calendar.SECOND, 0)
-
-                val remind = timeFormat.format(cal.time)
-                binding.inputRemind.text = remind
-            }, hour, minute, false)
-
-            timePickerDialog.show()
-        }
 
 
         this.binding.addReminderbtn.setOnClickListener {
             val dateText = binding.editTextDate.text.toString().trim()
             val timeText = binding.editTextTime.text.toString().trim()
-            val remText = binding.inputRemind.text.toString().trim()
+
             val noteText = binding.inputNotes.text.toString().trim()
 
             val dFormat = SimpleDateFormat("MM/dd/yyyy hh:mm:ss a", Locale.getDefault())
 
             val dTime = dFormat.parse("$dateText $timeText")
 
-            val remTime = dFormat.parse("$dateText $remText")
 
             val timestamp = Timestamp(dTime!!)
 
-            val remindstamp = Timestamp(remTime!!)
 
             val newData = mapOf(
                 "dateTime" to timestamp,
-                "reminder" to remindstamp,
                 "notes" to noteText
             )
 

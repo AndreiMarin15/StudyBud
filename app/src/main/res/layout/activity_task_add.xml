@@ -149,7 +149,7 @@
         android:ems="17"
         android:inputType="text"
         android:paddingStart="30px"
-        android:hint="Go to Pinterest for design inspiration"
+        android:hint="Input Notes Here (Optional)"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etCategory"

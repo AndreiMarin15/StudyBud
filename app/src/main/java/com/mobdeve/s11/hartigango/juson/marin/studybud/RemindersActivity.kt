@@ -17,7 +17,6 @@ import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ReminderModel
 class RemindersActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRemindersBinding
     private lateinit var recyclerView: RecyclerView
-    private lateinit var auth: FirebaseAuth
     private lateinit var sp: SharedPreferences
     private lateinit var reminderAdapter: ReminderAdapter
 
@@ -28,13 +27,10 @@ class RemindersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(this.binding.root)
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-        val docId = sp.getString("DOCID", "N/A")
+        val docId = sp.getString("DOCID", null)
         recyclerView = binding.recyclerView
 
-
         setupRecyclerView(docId!!)
-
-
 
         binding.addReminderbtn.setOnClickListener{
             val intent = Intent(this, ReminderAddActivity::class.java)

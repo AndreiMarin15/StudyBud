@@ -25,9 +25,9 @@ class EditTaskActivity : AppCompatActivity() {
         setContentView(this.binding.root)
 
         auth = FirebaseAuth.getInstance()
-        var date: String = "1/1/2000"
+        var date: String
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-        val docId = sp.getString("DOCID", "DOCID")!!
+        val docId = sp.getString("DOCID", null)!!
 
         val taskName = intent.getStringExtra("task")!!
 
@@ -36,6 +36,9 @@ class EditTaskActivity : AppCompatActivity() {
         val category = intent.getStringExtra("category")!!
 
         binding.tvTaskName.setText(taskName)
+
+
+
 
         val todoDate = intent.getStringExtra("todoDate")!!
 
@@ -62,7 +65,13 @@ class EditTaskActivity : AppCompatActivity() {
 
         binding.etDateTodo.text = sDate
 
-        if(status){binding.status.text = "Done"} else {binding.status.text = "In Progress"}
+        if(status){
+            binding.status.text = "Done"
+            binding.imgStatus.setImageResource(R.drawable.completed)
+        } else {
+            binding.status.text = "In Progress"
+            binding.imgStatus.setImageResource(R.drawable.inprogress)
+        }
         binding.etCat.text = category
         binding.edNote.setText(notes)
 
@@ -74,7 +83,7 @@ class EditTaskActivity : AppCompatActivity() {
 
             val datePickerDialog = DatePickerDialog(this, { _, y, m, d ->
                 date = "${m+1}/$d/$y"
-                binding.etDateTodo.setText(date)
+                binding.etDateTodo.text = date
             }, year, month, day)
 
             datePickerDialog.show()
