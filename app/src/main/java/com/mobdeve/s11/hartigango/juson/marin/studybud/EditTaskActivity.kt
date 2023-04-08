@@ -37,9 +37,6 @@ class EditTaskActivity : AppCompatActivity() {
 
         binding.tvTaskName.setText(taskName)
 
-
-
-
         val todoDate = intent.getStringExtra("todoDate")!!
 
         val todoDateRegEx = "Timestamp\\(seconds=(\\d+), nanoseconds=(\\d+)\\)".toRegex()
@@ -73,6 +70,10 @@ class EditTaskActivity : AppCompatActivity() {
             binding.imgStatus.setImageResource(R.drawable.inprogress)
         }
 
+
+        binding.etCat.text = category
+        binding.edNote.setText(notes)
+
         binding.imgStatus.setOnClickListener {
             if (!status){
                 binding.status.text = "Done"
@@ -84,8 +85,18 @@ class EditTaskActivity : AppCompatActivity() {
                 status = false
             }
         }
-        binding.etCat.text = category
-        binding.edNote.setText(notes)
+
+        binding.status.setOnClickListener {
+            if (!status){
+                binding.status.text = "Done"
+                binding.imgStatus.setImageResource(R.drawable.completed)
+                status = true
+            } else {
+                binding.status.text = "In Progress"
+                binding.imgStatus.setImageResource(R.drawable.inprogress)
+                status = false
+            }
+        }
 
         binding.etDateTodo.setOnClickListener {
             val calendar = Calendar.getInstance()
