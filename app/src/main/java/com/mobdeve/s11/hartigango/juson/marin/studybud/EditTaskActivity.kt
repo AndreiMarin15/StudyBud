@@ -31,7 +31,7 @@ class EditTaskActivity : AppCompatActivity() {
 
         val taskName = intent.getStringExtra("task")!!
 
-        val status = intent.getBooleanExtra("status", false)
+        var status = intent.getBooleanExtra("status", false)
         val notes = intent.getStringExtra("notes")!!
         val category = intent.getStringExtra("category")!!
 
@@ -71,6 +71,18 @@ class EditTaskActivity : AppCompatActivity() {
         } else {
             binding.status.text = "In Progress"
             binding.imgStatus.setImageResource(R.drawable.inprogress)
+        }
+
+        binding.imgStatus.setOnClickListener {
+            if (!status){
+                binding.status.text = "Done"
+                binding.imgStatus.setImageResource(R.drawable.completed)
+                status = true
+            } else {
+                binding.status.text = "In Progress"
+                binding.imgStatus.setImageResource(R.drawable.inprogress)
+                status = false
+            }
         }
         binding.etCat.text = category
         binding.edNote.setText(notes)
