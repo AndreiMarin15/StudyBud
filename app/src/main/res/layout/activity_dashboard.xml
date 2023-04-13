@@ -20,15 +20,15 @@
         android:id="@+id/profilepic"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:src="@drawable/profilepicture"
         android:background="@drawable/circle"
         android:scaleType="centerCrop"
+        android:src="@drawable/profilepicture"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564"
-        />
+        app:layout_constraintVertical_bias="0.571" />
 
     <LinearLayout
         android:id="@+id/linearLayout5"

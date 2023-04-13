@@ -103,6 +103,44 @@ class DashboardActivity: AppCompatActivity() {
             }
         }
 
+        binding.profilepic.setOnClickListener {
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        val toDoOnClick = View.OnClickListener {v: View? ->
+            val intent = Intent(this, TasksActivity::class.java)
+            intent.putExtra("category", "All Tasks")
+            intent.putExtra("mode", "all")
+            startActivity(intent)
+        }
+
+        val inProgressOnClick = View.OnClickListener {v: View? ->
+            val intent = Intent(this, TasksActivity::class.java)
+            intent.putExtra("category", "In Progress Tasks")
+            intent.putExtra("mode", "inProgress")
+            startActivity(intent)
+        }
+
+        val completedOnClick = View.OnClickListener {v: View? ->
+            val intent = Intent(this, TasksActivity::class.java)
+            intent.putExtra("category", "Completed Tasks")
+            intent.putExtra("mode", "completed")
+            startActivity(intent)
+        }
+
+        binding.todopic.setOnClickListener(toDoOnClick)
+        binding.todoText.setOnClickListener(toDoOnClick)
+        binding.todotasksText.setOnClickListener(toDoOnClick)
+
+        binding.inprogresspic.setOnClickListener(inProgressOnClick)
+        binding.inprogressTasks.setOnClickListener(inProgressOnClick)
+        binding.inprogressText.setOnClickListener(inProgressOnClick)
+
+        binding.completedpic.setOnClickListener(completedOnClick)
+        binding.completedTasks.setOnClickListener(completedOnClick)
+        binding.completedText.setOnClickListener(completedOnClick)
+
 
     }
 

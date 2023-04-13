@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -33,7 +34,29 @@ class TasksActivity : AppCompatActivity() {
         val docId = sp.getString("DOCID", null)!!
         recyclerView = binding.taskRecycler
 
-        setupRecyclerView(docId, category)
+        val mode = intent.getStringExtra("mode")
+
+        when (mode) {
+            "all" -> {
+                setupRecyclerAllTodos(docId)
+
+                binding.addTasksBtn.visibility = View.GONE
+            }
+            "inProgress" -> {
+                setupRecyclerInProgress(docId)
+
+                binding.addTasksBtn.visibility = View.GONE
+            }
+            "completed" -> {
+                setupRecyclerCompleted(docId)
+
+                binding.addTasksBtn.visibility = View.GONE
+            }
+            else -> {
+                setupRecyclerView(docId, category)
+            }
+        }
+
 
         binding.titleTV.text = category
 
@@ -64,6 +87,42 @@ class TasksActivity : AppCompatActivity() {
 
     private fun setupRecyclerView(docId: String, category: String) {
         val query = Utility.getCollectionReferenceForTasks(category, docId).orderBy("todoDate", Query.Direction.ASCENDING)
+        val options: FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
+            .setQuery(query, TaskModel::class.java).build()
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        taskAdapter = TaskAdapter(options, this, docId, null)
+        recyclerView.adapter = taskAdapter
+    }
+
+    private fun setupRecyclerAllTodos(docId: String){
+        val query = Utility.getCollectionReferenceForAllTasks(docId).orderBy("todoDate", Query.Direction.ASCENDING)
+
+        val options: FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
+            .setQuery(query, TaskModel::class.java).build()
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        taskAdapter = TaskAdapter(options, this, docId, null)
+        recyclerView.adapter = taskAdapter
+    }
+
+    private fun setupRecyclerInProgress(docId: String){
+        val query = Utility.getCollectionReferenceForAllTasks(docId).whereEqualTo("status", false).orderBy("todoDate", Query.Direction.ASCENDING)
+
+        val options: FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
+            .setQuery(query, TaskModel::class.java).build()
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        taskAdapter = TaskAdapter(options, this, docId, null)
+        recyclerView.adapter = taskAdapter
+    }
+
+    private fun setupRecyclerCompleted(docId: String){
+        val query = Utility.getCollectionReferenceForAllTasks(docId).whereEqualTo("status", true).orderBy("todoDate", Query.Direction.ASCENDING)
+
         val options: FirestoreRecyclerOptions<TaskModel> = FirestoreRecyclerOptions.Builder<TaskModel>()
             .setQuery(query, TaskModel::class.java).build()
 
