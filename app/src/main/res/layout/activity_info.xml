@@ -65,6 +65,18 @@
         app:layout_constraintStart_toStartOf="@+id/descMsg"
         app:layout_constraintTop_toBottomOf="@+id/descMsg" />
 
+    <ImageButton
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_logout_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/degreeInput"
         android:layout_width="wrap_content"
@@ -79,6 +91,7 @@
         app:layout_constraintStart_toStartOf="@+id/collegeInput"
         app:layout_constraintTop_toBottomOf="@+id/editCollege" />
 
+    ...
     <TextView
         android:id="@+id/idnumInput"
         android:layout_width="wrap_content"
@@ -99,11 +112,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:ems="17"
-        android:inputType="textPersonName|text"
+        android:inputType="text"
         android:hint="College"
         android:textColor="#8C8C8C"
         android:background="@drawable/textbox"
-       android:layout_marginLeft="-15px"
+        android:layout_marginLeft="-15px"
         android:paddingStart="30px"
         app:layout_constraintEnd_toEndOf="@+id/collegeInput"
         app:layout_constraintHorizontal_bias="0.0"

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -12,7 +13,7 @@ import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ListModel
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.UserInfoModel
 
-class InfoActivity : AppCompatActivity(){
+class InfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInfoBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var sp: SharedPreferences
@@ -28,43 +29,53 @@ class InfoActivity : AppCompatActivity(){
         val displayName = sp.getString("NAME", "NAME")
         val email = sp.getString("EMAIL", "EMAIL")
 
+        binding.logoutButton.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
         binding.confirmBtn.setOnClickListener {
-            val college = binding.editCollege.text.toString()
-            val program = binding.editDegree.text.toString()
-            val collegeID = binding.editID.text.toString()
-            val name = displayName!!
-            val userEmail = email!!
 
-            val user = UserInfoModel(name, userEmail, college, program, collegeID)
+            if (binding.editCollege.text.isNotEmpty() && binding.editDegree.text.isNotEmpty() && binding.editID.text.isNotEmpty()) {
+                val college = binding.editCollege.text.toString()
+                val program = binding.editDegree.text.toString()
+                val collegeID = binding.editID.text.toString()
+                val name = displayName!!
+                val userEmail = email!!
 
-            Utility.setUserInfo(user)
+                val user = UserInfoModel(name, userEmail, college, program, collegeID)
 
-            val userInfo = Utility.getCollectionReferenceForUsers()
-            userInfo.get().addOnSuccessListener {snapshot ->
-                for(doc in snapshot.documents){
-                    if(doc.data?.get("email") == userEmail){
-                        val docId = doc.id
+                Utility.setUserInfo(user)
 
-                        val intent = Intent(this, DashboardActivity::class.java)
-                        val editor: SharedPreferences.Editor = sp.edit()
-                        editor.putString("PROGRAM", program)
-                        editor.putString("DOCID", docId)
-                        editor.apply()
+                val userInfo = Utility.getCollectionReferenceForUsers()
+                userInfo.get().addOnSuccessListener { snapshot ->
+                    for (doc in snapshot.documents) {
+                        if (doc.data?.get("email") == userEmail) {
+                            val docId = doc.id
 
-                        startActivity(intent)
+                            val intent = Intent(this, DashboardActivity::class.java)
+                            val editor: SharedPreferences.Editor = sp.edit()
+                            editor.putString("PROGRAM", program)
+                            editor.putString("DOCID", docId)
+                            editor.apply()
+
+                            startActivity(intent)
+                        }
                     }
                 }
+            } else {
+                Toast.makeText(this, "Please fill up ALL fields.", Toast.LENGTH_SHORT).show()
             }
+
 
         }
         binding.welcomeMsg2.setOnClickListener {
             auth.signOut()
 
-            startActivity(Intent(this, MainActivity:: class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         binding.welcomeMsg2.text = "Welcome, ${displayName}"
     }
-
-
 }

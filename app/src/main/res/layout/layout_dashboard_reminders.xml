@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="18dp"
-        android:background="#114B5F"
+        android:background="@drawable/shape"
+        android:backgroundTint="#114B5F"
         android:orientation="horizontal"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
@@ -26,7 +27,7 @@
             android:id="@+id/notifBell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5pt"
+            android:layout_marginStart="2pt"
             android:layout_marginEnd="-15dp"
             android:layout_weight="1"
             android:backgroundTint="#114B5F"
@@ -75,6 +76,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_delete_24"
-            android:background="@color/black"/>
+            android:backgroundTint="@android:color/holo_red_light"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

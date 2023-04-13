@@ -67,10 +67,10 @@ class MainActivity : AppCompatActivity() {
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
 
-        result -> if(result.resultCode == Activity.RESULT_OK) {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                handleResults(task)
-                 }
+            result -> if(result.resultCode == Activity.RESULT_OK) {
+        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+        handleResults(task)
+    }
     }
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                         editor.putString("NAME", account.displayName)
                         editor.apply()
                         startActivity(intent)
-                        finish()
+
                     } else {
                         val intent = Intent(this, DashboardActivity::class.java)
                         val userInfo = Utility.getCollectionReferenceForUsers()

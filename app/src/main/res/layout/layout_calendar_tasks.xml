@@ -23,14 +23,17 @@
             android:id="@+id/dailytaskslayoutText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="15dp"
+            android:paddingStart="5dp"
             android:text="Daily Tasks"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
             android:text="CCAPDEV user interface"
             android:textColor="#FFFFFF" />
@@ -39,6 +42,7 @@
             android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
             android:text="Project Review"
             android:textColor="#FFFFFF" />
@@ -47,6 +51,7 @@
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
             android:text="Weekly Update"
             android:textColor="#FFFFFF" />

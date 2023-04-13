@@ -5,29 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
-    android:layout_marginHorizontal="5dp">
+    android:layout_marginHorizontal="5dp"
+    >
 
-    <Button
-        android:id="@+id/btnDel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <LinearLayout
         android:id="@+id/reminderBtnLayout"
         android:layout_width="390dp"
         android:layout_height="69dp"
-        android:background="#114B5F"
+        android:background="@drawable/shape"
         android:backgroundTint="#114B5F"
-        android:foregroundTint="#114B5F"
         android:orientation="vertical"
         android:paddingStart="15dp"
         android:paddingTop="10dp"
         android:paddingEnd="200dp"
         android:paddingBottom="10dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +29,7 @@
 
         <TextView
             android:id="@+id/listName"
-            android:layout_width="271dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#114B5F"
@@ -46,11 +40,23 @@
 
         <TextView
             android:id="@+id/itemCount"
-            android:layout_width="274dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:text="3 Items"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:src="@drawable/baseline_delete_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
