@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val webId = getString(R.string.default_web_client)
+        Log.d("asdfa", webId)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(webId)
             .requestEmail()
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "activity not okay", Toast.LENGTH_SHORT).show()
             Log.d("CHYLE", result.toString())
+
     }
     }
 
