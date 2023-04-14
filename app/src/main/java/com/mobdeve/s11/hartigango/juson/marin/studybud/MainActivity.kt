@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         val webId = getString(R.string.default_web_client)
-        Log.d("asdfa", webId)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(webId)
             .requestEmail()
@@ -57,14 +56,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnCont.setOnClickListener {
             signInGoogle()
-
         }
     }
 
 
     private fun signInGoogle() {
         val signInIntent = gsc.signInIntent
-
         launcher.launch(signInIntent)
 
     }
@@ -73,11 +70,7 @@ class MainActivity : AppCompatActivity() {
             result -> if(result.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             handleResults(task)
-        } else {
-            Toast.makeText(this, "activity not okay", Toast.LENGTH_SHORT).show()
-            Log.d("CHYLE", result.toString())
-
-    }
+        }
     }
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
@@ -113,7 +106,6 @@ class MainActivity : AppCompatActivity() {
                         editor.putString("EMAIL", account.email)
                         editor.putString("NAME", account.displayName)
                         editor.apply()
-                        Toast.makeText(this, "task.exception.toString(),", Toast.LENGTH_SHORT).show()
                         startActivity(intent)
 
                     } else {
@@ -133,7 +125,6 @@ class MainActivity : AppCompatActivity() {
                                         editor.putString("DOCID", docId)
                                         editor.putString("PROGRAM", program)
                                         editor.apply()
-                                        Toast.makeText(this, "task.exception.toString(),", Toast.LENGTH_SHORT).show()
                                         startActivity(intent)
                                         finish()
                                     }

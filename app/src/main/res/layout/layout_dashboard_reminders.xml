@@ -5,30 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:layout_marginHorizontal="0dp"
+    android:layout_marginHorizontal="5dp"
+    android:paddingTop="5dp"
+    android:layout_gravity="left"
     >
 
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="18dp"
         android:background="@drawable/shape"
         android:backgroundTint="#114B5F"
         android:orientation="horizontal"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/notifBell"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2pt"
-            android:layout_marginEnd="-15dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:backgroundTint="#114B5F"
             android:contentDescription="notif bell"
@@ -42,12 +44,13 @@
 
 
         <LinearLayout
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:foregroundTint="#114B5F"
             android:orientation="vertical"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="1dp">
 
@@ -56,18 +59,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:paddingStart="15dp"
                 android:text="CCINFOM Concept Exam"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_marginStart="25dp"
+                />
 
             <TextView
                 android:id="@+id/reminderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="15dp"
                 android:text="Today 12:45 PM"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="25dp"
+                />
 
         </LinearLayout>
 
@@ -75,7 +80,9 @@
             android:id="@+id/deleteBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_delete_24"
-            android:backgroundTint="@android:color/holo_red_light"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
+            android:backgroundTint="#114B5F"
+            android:src="@drawable/baseline_delete_24" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

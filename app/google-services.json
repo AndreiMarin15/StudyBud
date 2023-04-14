@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "136493390124-k0dvm892v58jpoj6mh56mij07f2st8nk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobdeve.s11.hartigango.juson.marin.studybud",
+            "certificate_hash": "908beb6980485d95dfc63cb316e48def9c68e8b0"
+          }
+        },
+        {
           "client_id": "136493390124-pu7nmkq9jvq9mbv3h79e34l1kis9aojh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
