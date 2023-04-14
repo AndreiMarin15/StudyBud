@@ -84,6 +84,16 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
             holder.itemView.context.startActivity(intent)
         }
 
+        holder.binding.todotask.setOnClickListener {
+            val intent = Intent(holder.itemView.context, EditTaskActivity::class.java)
+            intent.putExtra("task", task.task)
+            intent.putExtra("todoDate", task.todoDate.toString())
+            intent.putExtra("category", task.category)
+            intent.putExtra("status", task.status)
+            intent.putExtra("notes", task.notes)
+            holder.itemView.context.startActivity(intent)
+        }
+
         act?.setupProgress(id)
 
 
