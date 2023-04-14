@@ -26,7 +26,7 @@
         android:paddingEnd="45dp"
 
 
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView">
@@ -35,8 +35,8 @@
             android:id="@+id/remRecycle"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:maxHeight="100dp"
             android:layout_gravity="center_horizontal"
+            android:maxHeight="100dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +47,9 @@
             android:id="@+id/dailytasks2Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-medium"
 
             android:text="Daily Tasks"
             android:textColor="#114b5f"
@@ -60,9 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="40dp"
             android:maxWidth="340dp"
             android:maxHeight="160dp"
-            android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
