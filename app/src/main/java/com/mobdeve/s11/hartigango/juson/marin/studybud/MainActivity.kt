@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             handleResults(task)
         } else {
             Toast.makeText(this, "activity not okay", Toast.LENGTH_SHORT).show()
+            Log.d("CHYLE", result.toString())
     }
     }
 
