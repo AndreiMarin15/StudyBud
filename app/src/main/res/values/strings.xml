@@ -11,5 +11,5 @@
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_dashboard_screen" translatable="false">DashboardScreen</string>
 
-    <string name="default_web_client">136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com</string>
+    <string name="default_web_client" translatable="false">136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com</string>
 </resources>

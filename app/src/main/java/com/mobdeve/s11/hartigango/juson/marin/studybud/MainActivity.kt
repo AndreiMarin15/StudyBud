@@ -72,7 +72,9 @@ class MainActivity : AppCompatActivity() {
             result -> if(result.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             handleResults(task)
-        }
+        } else {
+            Toast.makeText(this, "activity not okay", Toast.LENGTH_SHORT).show()
+    }
     }
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
