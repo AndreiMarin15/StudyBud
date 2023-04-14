@@ -53,24 +53,25 @@ class MainActivity : AppCompatActivity() {
         gsc = GoogleSignIn.getClient(this, gso)
         gsc.signOut()
 
-        binding.btnCont.setOnClickListener(View.OnClickListener {
+        binding.btnCont.setOnClickListener {
             signInGoogle()
-        })
+
+        }
     }
 
 
     private fun signInGoogle() {
         val signInIntent = gsc.signInIntent
+
         launcher.launch(signInIntent)
 
     }
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-
             result -> if(result.resultCode == Activity.RESULT_OK) {
-        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-        handleResults(task)
-    }
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            handleResults(task)
+        }
     }
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
@@ -106,6 +107,7 @@ class MainActivity : AppCompatActivity() {
                         editor.putString("EMAIL", account.email)
                         editor.putString("NAME", account.displayName)
                         editor.apply()
+                        Toast.makeText(this, "task.exception.toString(),", Toast.LENGTH_SHORT).show()
                         startActivity(intent)
 
                     } else {
@@ -125,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                                         editor.putString("DOCID", docId)
                                         editor.putString("PROGRAM", program)
                                         editor.apply()
-
+                                        Toast.makeText(this, "task.exception.toString(),", Toast.LENGTH_SHORT).show()
                                         startActivity(intent)
                                         finish()
                                     }
