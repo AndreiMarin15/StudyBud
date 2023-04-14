@@ -45,8 +45,9 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        val webId = getString(R.string.default_web_client)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("136493390124-rjm4gqad82l7q78n8098cfhrs6861v2r.apps.googleusercontent.com")
+            .requestIdToken(webId)
             .requestEmail()
             .build()
 
