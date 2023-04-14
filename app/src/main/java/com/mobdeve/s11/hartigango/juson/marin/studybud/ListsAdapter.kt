@@ -63,7 +63,7 @@ class ListsAdapter(options: FirestoreRecyclerOptions<ListModel>, context: Contex
         return ListsViewHolder(itemViewBinding, parent.context)
 
 
-        // TODO: Implement itemCount
+
     }
 
     override fun onBindViewHolder(holder: ListsViewHolder, position: Int, list: ListModel) {

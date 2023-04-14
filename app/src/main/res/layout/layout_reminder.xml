@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
     android:layout_marginHorizontal="5dp"
@@ -12,8 +12,9 @@
 
     <LinearLayout
         android:id="@+id/reminderBtnLayout"
-        android:layout_width="390dp"
+        android:layout_width="wrap_content"
         android:layout_height="69dp"
+        android:maxWidth="250dp"
         android:background="@drawable/shape"
         android:backgroundTint="#114B5F"
         android:orientation="vertical"
@@ -29,7 +30,7 @@
 
         <TextView
             android:id="@+id/listName"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#114B5F"
@@ -52,11 +53,11 @@
         android:id="@+id/btnDel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_light"
+        android:backgroundTint="#114B5F"
         android:src="@drawable/baseline_delete_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias=".95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
