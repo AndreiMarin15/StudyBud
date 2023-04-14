@@ -61,15 +61,19 @@ class ListsAdapter(options: FirestoreRecyclerOptions<ListModel>, context: Contex
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListsViewHolder {
         val itemViewBinding: LayoutReminderBinding = LayoutReminderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListsViewHolder(itemViewBinding, parent.context)
-
-
-
     }
 
     override fun onBindViewHolder(holder: ListsViewHolder, position: Int, list: ListModel) {
         holder.bindData(list)
 
 
+        /*
+
+        This block of code checks if the list name is "Reminders", and if it is, hides and disables the delete button.
+        If the list name is not "Reminders", the delete button is enabled and when clicked, it deletes all tasks associated with the list
+        from the database and then deletes the list itself from the database. A toast message is displayed to inform the user that
+        the list has been deleted.
+        */
         if(holder.binding.listName.text == " Reminders "){
             holder.binding.btnDel.visibility = View.INVISIBLE
             holder.binding.btnDel.isEnabled = false

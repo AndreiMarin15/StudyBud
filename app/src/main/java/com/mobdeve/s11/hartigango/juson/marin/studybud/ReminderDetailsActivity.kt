@@ -64,6 +64,10 @@ class ReminderDetailsActivity : AppCompatActivity() {
         binding.editTextTime.text = sRemTime
 
 
+        /*
+        Show a DatePickerDialog when the EditText is clicked, allowing the user to select a date.
+        Once a date is selected, format it as a string with the format MM/dd/yyyy and set it as the text for the EditText.
+        */
         binding.editTextDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -78,6 +82,12 @@ class ReminderDetailsActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+
+        /*
+        This code displays a TimePickerDialog when the user clicks on an EditText named editTextTime. The selected time is then formatted and set as the text for the EditText.
+
+        It uses Calendar to get the current time and creates a TimePickerDialog with an initial value. Once the user selects a time, it is formatted and set as the text for the EditText view.
+        */
         binding.editTextTime.setOnClickListener {
             val calendar = Calendar.getInstance()
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -98,6 +108,11 @@ class ReminderDetailsActivity : AppCompatActivity() {
 
 
 
+        /*
+        This code updates a reminder in Firestore with a new date and time and notes. It parses the date and time text from the corresponding EditText views, combines them into a single string, and then converts them to a Timestamp.
+
+        It then creates a new map with the updated data and uses it to update the corresponding document in Firestore. If successful, a "Reminder Updated!" message is displayed to the user and the activity is finished.
+        */
         this.binding.addReminderbtn.setOnClickListener {
             val dateText = binding.editTextDate.text.toString().trim()
             val timeText = binding.editTextTime.text.toString().trim()

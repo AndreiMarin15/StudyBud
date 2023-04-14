@@ -35,6 +35,8 @@ class ReminderAddActivity : AppCompatActivity() {
 
 
 
+        /* Shows a date picker dialog when the date EditText view is clicked. The default date is the current date.
+        When the user selects a date, the selected date is stored in the variable 'date', which is then displayed in the date EditText view. */
         binding.etDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -49,6 +51,10 @@ class ReminderAddActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+        /*
+        Set an OnClickListener for the time EditText field that shows a TimePickerDialog. The selected time is then formatted
+        using a SimpleDateFormat object and set to the text of the EditText field.
+        */
         binding.etTime.setOnClickListener {
             val calendar = Calendar.getInstance()
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -70,7 +76,14 @@ class ReminderAddActivity : AppCompatActivity() {
         }
 
 
-
+        /*
+        Handles saving of a reminder object to Firestore database.
+        Gets the date, name, and time inputted by the user and checks if they are not empty.
+        Parses the date and time strings into a Timestamp object and creates a ReminderModel object using the inputs.
+        Saves the ReminderModel object to the Firestore database using the user's document ID as reference.
+        Displays a toast message when the reminder is successfully added and finishes the activity.
+        If the input fields are empty, displays a toast message prompting the user to fill up all fields.
+        */
         binding.btnSave.setOnClickListener {
             val dateText = binding.etDate.text.toString().trim()
             val nameText = binding.etName.text.toString().trim()

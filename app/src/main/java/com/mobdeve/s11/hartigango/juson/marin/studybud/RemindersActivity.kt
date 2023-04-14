@@ -38,6 +38,11 @@ class RemindersActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    This code sets up a RecyclerView to display reminders for a document in Firestore. It creates a Firestore query that orders the reminders by date and time and builds a FirestoreRecyclerOptions object.
+
+    It then sets the layout manager and adapter for the RecyclerView using a ReminderAdapter.
+    */
     private fun setupRecyclerView(docId: String) {
         val query = Utility.getCollectionReferenceForReminders(docId).orderBy("dateTime", Query.Direction.ASCENDING)
         val options: FirestoreRecyclerOptions<ReminderModel> = FirestoreRecyclerOptions.Builder<ReminderModel>()

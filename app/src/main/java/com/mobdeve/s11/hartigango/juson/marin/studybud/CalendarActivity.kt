@@ -32,20 +32,21 @@ class CalendarActivity : AppCompatActivity() {
         this.binding = ActivityCalendarBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(this.binding.root)
-        binding.logoutBtn.setOnClickListener {
+
+        binding.logoutBtn.setOnClickListener {// logs out the current auth instance or the user
             auth.signOut()
             startActivity(Intent(this, MainActivity:: class.java))
             finish()
         }
 
-        binding.dashboardNav.setOnClickListener {
+        binding.dashboardNav.setOnClickListener {// go to the dashboard activity
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
             finish()
         }
 
-        binding.listNav.setOnClickListener {
+        binding.listNav.setOnClickListener { // go to the lists activity
             val intent = Intent(this, ListsActivity:: class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
@@ -73,6 +74,11 @@ class CalendarActivity : AppCompatActivity() {
         taskRecycler = binding.taskRecycle
         setupTaskRecycler(docId, timestamp)
 
+        // This code sets a listener for when the user selects a date in a calendar view.
+        // When a date is selected, it creates a calendar instance and sets its date to the selected year, month, and day.
+        // It then converts the calendar's date to a Date object, formats the date as a string using a date formatter,
+        // parses the formatted date string back into a Date object using the same formatter, and converts the Date object
+        // to a Timestamp object. Finally, it sets up two recycler views to display tasks and reminders for the selected date.
         binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
 
             val calendar = Calendar.getInstance()
@@ -92,6 +98,16 @@ class CalendarActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Sets up a recycler view to display reminders for a given document ID and timestamp.
+     * This function first creates a calendar instance and sets its date to the given timestamp's date.
+     * It then adds one day to the calendar's date to get the next day's date and creates a new timestamp
+     * for that date. Using these timestamps, it queries the Firebase Firestore database to get all reminders
+     * that fall between the given timestamp and the next day's timestamp, ordered by their date and time in
+     * ascending order. It then creates a FirestoreRecyclerOptions object with the query and ReminderModel class,
+     * sets up a reminder adapter with the options, and sets the adapter to the recycler view. Finally, it starts
+     * listening for changes to the adapter and notifies the adapter that its data has changed.
+     */
     private fun setupReminderRecycler(docId: String, timestamp: Timestamp) {
         val calendar = Calendar.getInstance()
         calendar.time = timestamp.toDate()
@@ -119,6 +135,13 @@ class CalendarActivity : AppCompatActivity() {
         reminderAdapter.notifyDataSetChanged()
     }
 
+    /**
+     * Sets up a recycler view to display tasks for a given document ID and timestamp.
+     * This function queries the Firebase Firestore database to get all tasks that have a todoDate equal
+     * to the given timestamp. It then creates a FirestoreRecyclerOptions object with the query and TaskModel class,
+     * sets up a task adapter with the options, and sets the adapter to the recycler view. Finally, it starts
+     * listening for changes to the adapter and notifies the adapter that its data has changed.
+     */
     private fun setupTaskRecycler(docId: String, timestamp: Timestamp) {
         val query = Utility.getCollectionReferenceForAllTasks(docId)
             .whereEqualTo("todoDate", timestamp)

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Query
-import com.mobdeve.s11.hartigango.juson.marin.studybud.*
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityListsBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ListModel
@@ -54,13 +53,17 @@ class ListsActivity : AppCompatActivity() {
         }
 
         binding.addReminderbtn.setOnClickListener {
-            val intent = Intent(this, AddTaskActivity:: class.java)
+            val intent = Intent(this, ListsAddActivity:: class.java)
             startActivity(intent)
 
         }
 
     }
 
+    /*
+    This block handles the onClickListener for the "confirm" button in the user information form. It first checks if all the required fields (college, degree, and ID) are filled. If all fields are filled, it creates a new UserInfoModel object and calls Utility.setUserInfo() to add it to the Firestore database. It then queries the database to find the document with the user's email, retrieves its ID, and saves it to shared preferences along with the user's program. Finally, it starts the DashboardActivity.
+    If any of the required fields are empty, it displays a toast message to remind the user to fill all fields.
+    */
     private fun setupRecyclerView(docID: String) {
         val query = Utility.getCollectionReferenceForLists(docID)
             .orderBy("name", Query.Direction.ASCENDING)

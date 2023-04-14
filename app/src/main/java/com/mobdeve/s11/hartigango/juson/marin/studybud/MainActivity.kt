@@ -36,21 +36,25 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
+        // Initialize Firebase App
         FirebaseApp.initializeApp(this)
+
+        // Check if user is already signed in
         val currentUser = auth.currentUser
         if (currentUser != null) {
-
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
             finish()
         }
 
+        // Set up Google Sign In options
         val webId = getString(R.string.default_web_client)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(webId)
             .requestEmail()
             .build()
 
+        // Sign out from Google
         gsc = GoogleSignIn.getClient(this, gso)
         gsc.signOut()
 
@@ -66,6 +70,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /*
+
+    This block of code registers a callback to be invoked when an activity is started
+    for result. If the result code is OK, it gets the signed-in account from the result data
+    and calls the handleResults() function passing the task as parameter.
+    */
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result -> if(result.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
@@ -73,6 +83,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    /*
+    This function handles the results of a Google sign-in task.
+    It checks if the sign-in was successful and verifies if the email used is from DLSU domain.
+    If the sign-in is successful and email is from DLSU, it calls the updateUI function.
+    If the email is not from DLSU, it displays a toast message and signs out the user.
+    If the sign-in is not successful, it displays a toast message with the exception message.
+    */
     private fun handleResults(task: Task<GoogleSignInAccount>) {
         task.addOnCompleteListener { signInTask ->
             if (signInTask.isSuccessful) {
@@ -92,6 +110,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Updates the UI after a successful Google Sign-In.
+     * Retrieves user information from the database and starts the corresponding activity.
+     * If the user is not yet registered, directs them to the InfoActivity to complete their profile.
+     */
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener{ task ->

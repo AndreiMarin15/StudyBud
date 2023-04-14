@@ -39,6 +39,15 @@ class EditTaskActivity : AppCompatActivity() {
 
         val todoDate = intent.getStringExtra("todoDate")!!
 
+        /**
+
+        This code block takes a string representing a Firestore Timestamp in the form "Timestamp(seconds=123456789, nanoseconds=123456789)",
+        extracts the seconds and nanoseconds values from it using a regular expression, converts the seconds value to a Date object,
+        formats the date as a string in the "MM/dd/yyyy" format, and creates a new Timestamp object using the extracted seconds and nanoseconds values.
+        It then formats this new Timestamp as a string in the "MMMM d, yyyy 'at' h:mm:ss a 'UTC'Z" format, setting the time zone to UTC+8.
+        The resulting formatted string represents the original Timestamp value converted to the UTC+8 time zone.
+         */
+
         val todoDateRegEx = "Timestamp\\(seconds=(\\d+), nanoseconds=(\\d+)\\)".toRegex()
 
         val matchResult = todoDateRegEx.find(todoDate)
@@ -58,6 +67,8 @@ class EditTaskActivity : AppCompatActivity() {
         formattedStamp.timeZone = TimeZone.getTimeZone("UTC+8")
 
         val sStamp = formattedStamp.format(tstamp.toDate())
+
+
 
 
         binding.etDateTodo.text = sDate
@@ -98,6 +109,13 @@ class EditTaskActivity : AppCompatActivity() {
             }
         }
 
+
+        /**
+
+        This code block sets an OnClickListener on a TextView (binding.etDateTodo) to show a DatePickerDialog when the TextView is clicked.
+        The DatePickerDialog allows the user to select a date, which is then displayed in the TextView in the format "MM/dd/yyyy".
+        The selected date is stored in the variable "date".
+         */
         binding.etDateTodo.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -112,6 +130,13 @@ class EditTaskActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+        /*
+         * This function sets up the recycler view for displaying tasks for a specific date.
+         * It first gets the current date and formats it into a timestamp. Then, it creates a
+         * Firestore query to retrieve all tasks for the specified date. Finally, it sets up
+         * the RecyclerView with the FirestoreRecyclerOptions and TaskAdapter, and displays the
+         * results on the UI.
+         */
         this.binding.savebutton.setOnClickListener {
             val query = Utility.getCollectionReferenceForTasks(category, docId)
                 .whereEqualTo("category", category)

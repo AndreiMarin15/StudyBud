@@ -30,7 +30,7 @@
             android:name=".TasksActivity"
             android:exported="false" />
         <activity
-            android:name=".AddTaskActivity"
+            android:name=".ListsAddActivity"
             android:exported="false" />
         <activity
             android:name=".CalendarActivity"

@@ -94,7 +94,11 @@ class DashboardActivity: AppCompatActivity() {
         this.recyclerView2 = binding.recycleTasks
         setupTaskRecycler(docId)
 
-
+        /**
+         * Queries the Firebase Firestore database to check if a remindersList with the given document ID exists.
+         * If no remindersList is found, this function creates a new one with the given document ID and
+         * default data for an empty remindersList.
+         */
         val db = Utility.getCollectionReferenceForReminders(docId)
         val query = db.whereEqualTo("name", "remindersList")
         query.get().addOnSuccessListener { reminder ->
@@ -145,7 +149,11 @@ class DashboardActivity: AppCompatActivity() {
     }
 
 
-
+    /**
+    This function takes a document ID as input and retrieves all tasks associated with that document from Firestore.
+    It then calculates the number of tasks that are in progress and the number of tasks that have been completed,
+    and updates the corresponding UI elements with the counts.
+     **/
      fun setupProgress(docId: String){
 
         var inProgress = 0
@@ -170,6 +178,12 @@ class DashboardActivity: AppCompatActivity() {
         }
     }
 
+    /**
+    This function sets up a FirestoreRecyclerAdapter to display all tasks for a given document ID that have a "todoDate" field equal to today's date.
+    It first gets the current date and formats it to match the format used in the "todoDate" field in Firestore.
+    It then constructs a query to retrieve all tasks that have a "todoDate" field equal to the current date for the given document ID.
+    The query is used to construct a FirestoreRecyclerOptions object, which is used to initialize a TaskAdapter and set it as the adapter for the recyclerView2.
+     */
     private fun setupTaskRecycler(docId: String) {
         val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
         val now = Date()
@@ -186,6 +200,14 @@ class DashboardActivity: AppCompatActivity() {
 
     }
 
+    /**
+
+    This function sets up a FirestoreRecyclerAdapter to display all reminders for a given document ID that have a "dateTime" field greater than or equal to today's date.
+    It first gets the current date and formats it to match the format used in the "dateTime" field in Firestore.
+    It then constructs a query to retrieve all reminders that have a "dateTime" field greater than or equal to the current date for the given document ID.
+    The query is used to construct a FirestoreRecyclerOptions object, which is used to initialize a ReminderAdapter and set it as the adapter for the reminderRecycler.
+    The reminders are ordered in ascending order by the "dateTime" field, so the earliest reminders appear first in the list.
+     */
     private fun setupReminderRecycler(docId: String) {
 
         val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)

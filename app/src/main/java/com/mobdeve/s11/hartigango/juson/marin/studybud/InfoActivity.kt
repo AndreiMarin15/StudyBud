@@ -33,6 +33,11 @@ class InfoActivity : AppCompatActivity() {
             finish()
         }
 
+
+        /*
+        This block handles the onClickListener for the "confirm" button in the user information form. It first checks if all the required fields (college, degree, and ID) are filled. If all fields are filled, it creates a new UserInfoModel object and calls Utility.setUserInfo() to add it to the Firestore database. It then queries the database to find the document with the user's email, retrieves its ID, and saves it to shared preferences along with the user's program. Finally, it starts the DashboardActivity.
+        If any of the required fields are empty, it displays a toast message to remind the user to fill all fields.
+        */
         binding.confirmBtn.setOnClickListener {
 
             if (binding.editCollege.text.isNotEmpty() && binding.editDegree.text.isNotEmpty() && binding.editID.text.isNotEmpty()) {

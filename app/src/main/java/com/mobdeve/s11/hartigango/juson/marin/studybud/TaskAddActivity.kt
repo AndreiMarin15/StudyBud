@@ -48,6 +48,13 @@ class TaskAddActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+
+        /*
+        This code sets an OnClickListener on a button in an activity. When clicked, it retrieves the text from two EditText views and checks if they are not empty. If both fields are not empty, it creates a
+        TaskModel object with the title, date, category, note, and completed status, and saves it to Firestore using a Utility method.
+        If the task is successfully saved, a "Task Added!" message is displayed to the user using a Toast and the activity is finished.
+        If either field is empty, a "Please fill up all fields" message is displayed to the user using a Toast.
+        */
         binding.savebutton.setOnClickListener {
             val dateText = binding.etTodoDate.text.toString().trim()
 

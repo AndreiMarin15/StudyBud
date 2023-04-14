@@ -47,6 +47,11 @@ class ReminderAdapter(options: FirestoreRecyclerOptions<ReminderModel>, context:
             holder.itemView.context.startActivity(intent)
         }
 
+        /*
+        * Set onClickListener for delete button in ReminderViewHolder
+        * Obtain Firestore reference to the reminder to be deleted using reminder's ID and title
+        * If the reminder exists, delete the document reference from Firestore and show a toast message
+        */
         holder.binding.deleteBtn.setOnClickListener {
                 Utility.getCollectionReferenceForReminders(id)
                     .whereEqualTo("title", reminder.title)

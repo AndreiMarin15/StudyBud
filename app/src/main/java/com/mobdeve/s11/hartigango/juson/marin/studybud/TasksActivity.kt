@@ -96,6 +96,14 @@ class TasksActivity : AppCompatActivity() {
         recyclerView.adapter = taskAdapter
     }
 
+
+    /*
+    This is a Kotlin function that sets up a RecyclerView to display a list of tasks.
+    The function receives a document ID as a parameter, which is used to retrieve the tasks
+    from Firestore in ascending order based on their "todoDate" property.
+    The retrieved tasks are then passed to a TaskAdapter, which populates the RecyclerView
+    with the task data.
+    */
     private fun setupRecyclerAllTodos(docId: String){
         val query = Utility.getCollectionReferenceForAllTasks(docId).orderBy("todoDate", Query.Direction.ASCENDING)
 
@@ -108,6 +116,14 @@ class TasksActivity : AppCompatActivity() {
         recyclerView.adapter = taskAdapter
     }
 
+
+    /*
+    This is a Kotlin function that sets up a RecyclerView to display a list of tasks that are in progress.
+    The function receives a document ID as a parameter, which is used to retrieve the tasks from Firestore
+    that have a "status" property equal to false. The retrieved tasks are sorted in
+    ascending order based on their "todoDate" property, and then passed to a TaskAdapter, which populates
+    the RecyclerView with the task data.
+    */
     private fun setupRecyclerInProgress(docId: String){
         val query = Utility.getCollectionReferenceForAllTasks(docId).whereEqualTo("status", false).orderBy("todoDate", Query.Direction.ASCENDING)
 
@@ -120,6 +136,14 @@ class TasksActivity : AppCompatActivity() {
         recyclerView.adapter = taskAdapter
     }
 
+
+    /*
+    This is a Kotlin function that sets up a RecyclerView to display a list of completed tasks.
+    The function receives a document ID as a parameter, which is used to retrieve the tasks from Firestore
+    that have a "status" property equal to true. The retrieved tasks are sorted in
+    ascending order based on their "todoDate" property, and then passed to a TaskAdapter, which populates
+    the RecyclerView with the task data.
+    */
     private fun setupRecyclerCompleted(docId: String){
         val query = Utility.getCollectionReferenceForAllTasks(docId).whereEqualTo("status", true).orderBy("todoDate", Query.Direction.ASCENDING)
 

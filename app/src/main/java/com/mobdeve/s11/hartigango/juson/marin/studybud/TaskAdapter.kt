@@ -86,6 +86,12 @@ class TaskAdapter(options: FirestoreRecyclerOptions<TaskModel>, context: Context
 
         act?.setupProgress(id)
 
+
+        /*
+        This code sets an OnClickListener on a button in a RecyclerView item. When clicked, it retrieves a Firestore document that matches
+        the task's category, task name, and todo date. If a matching document is found, it is deleted using a Utility method that takes the category, document ID, and task ID as arguments.
+        If the deletion is successful, a "Task Deleted" message is displayed to the user using a Toast.
+        */
         holder.binding.btnDelete.setOnClickListener {
             Utility.getCollectionReferenceForTasks(task.category, id)
                 .whereEqualTo("category", task.category)

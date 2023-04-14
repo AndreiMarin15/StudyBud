@@ -46,6 +46,15 @@ class UserProfileActivity : AppCompatActivity() {
             binding.editID.setText("schoolID")
         }
 
+
+        /*
+        This is a Kotlin code block that sets an OnClickListener for a "confirm" button.
+        When the button is clicked, it retrieves the values from three EditText views (editCollege, editDegree, and editID)
+        and stores them in a newData map with corresponding keys. The map is then used to update the Firestore document
+        referenced by the query variable.
+        If the update is successful, a toast message is displayed to confirm the update. If the update fails, a toast message
+        is displayed to indicate that the update failed.
+        */
         binding.confirmBtn.setOnClickListener {
             val college = binding.editCollege.text.toString()
             val program = binding.editDegree.text.toString()

@@ -5,17 +5,13 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.s11.hartigango.juson.marin.studybud.databinding.ActivityAddTaskBinding
 import com.mobdeve.s11.hartigango.juson.marin.studybud.helpers.Utility
 import com.mobdeve.s11.hartigango.juson.marin.studybud.models.ListModel
-import java.sql.Time
-import java.text.SimpleDateFormat
-import java.util.*
 
-class AddTaskActivity : AppCompatActivity() {
+class ListsAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddTaskBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var sp: SharedPreferences
@@ -27,12 +23,12 @@ class AddTaskActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         sp = applicationContext.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
-        this.binding.createListbtn.setOnClickListener{
+        this.binding.createListbtn.setOnClickListener{ // Adds a new list to the database using the information entered by the user
             val name = binding.editListName.text.toString()
             val owner = sp.getString("EMAIL", null)
 
             val docId = sp.getString("DOCID", null)
-            val timestamp = Timestamp(Timestamp.now().toDate())
+            val timestamp = Timestamp.now()
 
             val list = ListModel(name.trim(), owner!!, timestamp)
 
